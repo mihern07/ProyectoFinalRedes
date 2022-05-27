@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xherion/FinalRedes4/src/main.cpp
+SDL2/SDL.h
+-
+SDL2/SDL_opengl.h
+-
+stdio.h
+-
+

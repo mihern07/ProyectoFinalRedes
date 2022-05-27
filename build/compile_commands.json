@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/xherion/FinalRedes4/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/sdl2_demo.dir/src/main.cpp.o -c /home/xherion/FinalRedes4/src/main.cpp",
+  "file": "/home/xherion/FinalRedes4/src/main.cpp"
+}
+]
