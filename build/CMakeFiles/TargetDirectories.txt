@@ -1,5 +1,3 @@
-/home/xherion/FinalRedes4/build/CMakeFiles/edit_cache.dir
-/home/xherion/FinalRedes4/build/CMakeFiles/rebuild_cache.dir
-/home/xherion/FinalRedes4/build/CMakeFiles/package.dir
-/home/xherion/FinalRedes4/build/CMakeFiles/package_source.dir
-/home/xherion/FinalRedes4/build/CMakeFiles/sdl2_demo.dir
+/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/rebuild_cache.dir
+/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/edit_cache.dir
+/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/sdl2_demo.dir

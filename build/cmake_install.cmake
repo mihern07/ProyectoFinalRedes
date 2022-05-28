@@ -1,4 +1,4 @@
-# Install script for directory: /home/xherion/FinalRedes4
+# Install script for directory: /home/sam/Escritorio/ProyectoFinalRedes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xherion/FinalRedes4/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sam/Escritorio/ProyectoFinalRedes/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

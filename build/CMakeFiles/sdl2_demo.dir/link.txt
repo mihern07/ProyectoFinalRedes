@@ -1,1 +1,1 @@
-/usr/bin/g++  -g  -rdynamic CMakeFiles/sdl2_demo.dir/src/main.cpp.o  -o sdl2_demo  -lSDL2main -lSDL2 -lGL 
+/usr/bin/c++  -g  -rdynamic CMakeFiles/sdl2_demo.dir/src/main.cpp.o  -o sdl2_demo  -lSDL2main -lSDL2 -lGL 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xherion/FinalRedes4/src/main.cpp" "/home/xherion/FinalRedes4/build/CMakeFiles/sdl2_demo.dir/src/main.cpp.o"
+  "/home/sam/Escritorio/ProyectoFinalRedes/src/main.cpp" "/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/sdl2_demo.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
