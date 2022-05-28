@@ -2,7 +2,7 @@
 #include <SDL2/SDL_opengl.h>
 #include <stdio.h>
 
-#include "sdlutils/SDLUtils.h"
+#include "SDLUtils.h"
 
 static int resizeCallback(void *data, SDL_Event *event) //https://stackoverflow.com/questions/32294913/getting-contiunous-window-resize-event-in-sdl-2
 {
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 	SDL_Event sdl_event;
 
 	
-	// auto &sdl = *SDLUtils::instance();
+	 auto &sdl = *SDLUtils::instance();
 
 
 
