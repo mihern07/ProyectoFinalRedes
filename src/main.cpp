@@ -2,7 +2,7 @@
 #include <SDL2/SDL_opengl.h>
 #include <stdio.h>
 
-#include "sdlutils/Texture.h"
+#include "sdlutils/SDLUtils.h"
 
 static int resizeCallback(void *data, SDL_Event *event) //https://stackoverflow.com/questions/32294913/getting-contiunous-window-resize-event-in-sdl-2
 {
@@ -22,6 +22,8 @@ static int resizeCallback(void *data, SDL_Event *event) //https://stackoverflow.
 int main(int argc, char *argv[])
 {
 	SDL_Window *sdl_window = nullptr;
+
+	
 
 	unsigned int window_flags = SDL_WINDOW_OPENGL;
 
@@ -69,6 +71,12 @@ int main(int argc, char *argv[])
 
 	bool isRunning = true;
 	SDL_Event sdl_event;
+
+	
+	// auto &sdl = *SDLUtils::instance();
+
+
+
 	while (isRunning)
 	{
 		// 1. check events
@@ -124,6 +132,9 @@ int main(int argc, char *argv[])
 			}
 
 			// 2. update screen
+
+			
+
 
 			// clear screen
 			glClear(GL_COLOR_BUFFER_BIT);
