@@ -3,3 +3,7 @@
 
 CMakeFiles/sdl2_demo.dir/src/main.cpp.o
  /home/xherion/FinalRedes4/src/main.cpp
+ /home/xherion/FinalRedes4/src/sdlutils/Font.h
+ /home/xherion/FinalRedes4/src/sdlutils/Texture.h
+ /home/xherion/FinalRedes4/src/sdlutils/macros.h
+ /home/xherion/FinalRedes4/src/utils/Vector2D.h

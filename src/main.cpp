@@ -2,6 +2,8 @@
 #include <SDL2/SDL_opengl.h>
 #include <stdio.h>
 
+#include "sdlutils/Texture.h"
+
 static int resizeCallback(void *data, SDL_Event *event) //https://stackoverflow.com/questions/32294913/getting-contiunous-window-resize-event-in-sdl-2
 {
 	if (event->type == SDL_WINDOWEVENT && event->window.event == SDL_WINDOWEVENT_RESIZED)
@@ -10,6 +12,8 @@ static int resizeCallback(void *data, SDL_Event *event) //https://stackoverflow.
 		if (win == (SDL_Window *)data)
 		{
 			printf("resizing.....\n");
+
+			
 		}
 	}
 	return 0;
