@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/sam/Escritorio/ProyectoFinalRedes/build",
-  "command": "/usr/bin/c++    -g   -o CMakeFiles/sdl2_demo.dir/src/main.cpp.o -c /home/sam/Escritorio/ProyectoFinalRedes/src/main.cpp",
-  "file": "/home/sam/Escritorio/ProyectoFinalRedes/src/main.cpp"
-}
-]

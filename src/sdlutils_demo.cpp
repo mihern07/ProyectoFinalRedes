@@ -13,7 +13,7 @@ using namespace std;
 void sdlutils_basic_demo() {
 
 	// Initialise the SDLGame singleton
-	SDLUtils::init("SDLGame Demo!", 800, 600,
+	SDLUtils::init("SDLGame Demo", 1200, 800,
 			"resources/config/sdlutilsdemo.resources.json");
 
 	// reference to the SDLUtils Singleton. You could use it as a pointer as well,
@@ -32,8 +32,8 @@ void sdlutils_basic_demo() {
 	SDL_Renderer *renderer = sdl.renderer();
 
 	// we can take textures from the predefined ones, and we can create a custom one as well
-	auto &sdlLogo = sdl.images().at("sdl_logo");
-	auto &helloSDL = sdl.msgs().at("HelloSDL");
+	auto &sdlLogo = sdl.images().at("textBox");
+	auto &mainText = sdl.msgs().at("mainText2");
 	Texture pressAnyKey(renderer, "Press any key to exit",
 			sdl.fonts().at("ARIAL24"), build_sdlcolor(0x112233ff),
 			build_sdlcolor(0xffffffff));
@@ -46,10 +46,10 @@ void sdlutils_basic_demo() {
 	auto x1 = 0;
 	auto y1 = y0 - 4 * pressAnyKey.height();
 	auto x2 = (winWidth - sdlLogo.width()) / 2;
-	auto y2 = y0 + 2 * pressAnyKey.height();
+	auto y2 = y0 + 3 * pressAnyKey.height();
 
 	// start the music in a loop
-	sdl.musics().at("beat").play();
+	// sdl.musics().at("beat").play();
 
 	// reference to the input handler (we could use a pointer, I just . rather than ->).
 	// you can also use the inline method ih() that is defined in InputHandler.h
@@ -72,10 +72,10 @@ void sdlutils_basic_demo() {
 		sdl.clearRenderer();
 
 		// render Hello SDL
-		helloSDL.render(x1, y1);
-		if (x1 + helloSDL.width() > winWidth)
-			helloSDL.render(x1 - winWidth, y1);
-		x1 = (x1 + 5) % winWidth;
+		mainText.render(x1, y1);
+		// if (x1 + helloSDL.width() > winWidth)
+		// 	helloSDL.render(x1 - winWidth, y1);
+		// x1 = (x1 + 5) % winWidth;
 
 		// render Press Any Key
 		pressAnyKey.render(x0, y0);

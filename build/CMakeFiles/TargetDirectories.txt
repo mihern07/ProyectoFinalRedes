@@ -1,3 +1,0 @@
-/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/rebuild_cache.dir
-/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/edit_cache.dir
-/home/sam/Escritorio/ProyectoFinalRedes/build/CMakeFiles/sdl2_demo.dir
