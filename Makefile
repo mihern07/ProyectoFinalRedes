@@ -30,9 +30,9 @@ OBJDIR = obj
 
 ############## Do not change anything from here downwards! #############
 
-SRC = $(wildcard $(SRCDIR)/*$(EXT))
+SRC = $(wildcard $(SRCDIR)/*$(EXT)) $(wildcard $(SRCDIR)/*/*$(EXT))
 
-OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
+OBJ = $(patsubst $(SRCDIR)/%$(EXT),$(OBJDIR)/%.o,$(SRC))
 
 DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
 
