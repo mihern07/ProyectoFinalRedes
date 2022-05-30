@@ -1,137 +1,34 @@
-########################################################################
+CXX		  := g++
+CXX_FLAGS := -Wall -Wno-unknown-pragmas -Wextra -std=c++17 -ggdb 
 
-####################### Makefile Template ##############################
+BIN		:= bin
+SRC		:= src
+INCLUDE	:= include
+LIB		:= lib
+SERVER 	:= server
+CLIENT 	:= client
 
-########################################################################
+LIBRARIES	:= -lSDL2 -lSDL2main -lpthread
+EXECUTABLE	:= snake
+SERVER_EXE	:= server
+SERVER_SRC := server/src
+INCLUDE_CLIENT := client/include
+INClUDE_SERVER := server/include
+CLIENT_SRC 	:= client/src
+COMMON 		:= Common
 
+all: $(BIN)/$(EXECUTABLE) $(BIN)/$(SERVER_EXE)
 
+run: clean all
+	clear
+	./$(BIN)/$(EXECUTABLE)
+	./$(BIN)/$(SERVER_EXE)
 
-# Compiler settings - Can be customized.
+$(BIN)/$(EXECUTABLE): $(CLIENT_SRC)/*.cpp $(COMMON)/*.cpp  
+	$(CXX) $(CXX_FLAGS) -I$(INCLUDE_CLIENT) -I$(COMMON) -L$(LIB) $^ -o $@ $(LIBRARIES)
 
-CC = g++
-
-CXXFLAGS = -std=c++17 -Wall -g
-
-LDFLAGS = -lSDL2 -lSDL2main -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lGL
-
-
-
-# Makefile settings - Can be customized.
-
-APPNAME = ProyectoRedes
-
-EXT = .cpp
-
-SRCDIR = src
-
-OBJDIR = obj
-
-
-
-############## Do not change anything from here downwards! #############
-
-SRC = $(wildcard $(SRCDIR)/*$(EXT)) $(wildcard $(SRCDIR)/*/*$(EXT))
-
-OBJ = $(patsubst $(SRCDIR)/%$(EXT),$(OBJDIR)/%.o,$(SRC))
-
-DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
-
-# UNIX-based OS variables & settings
-
-RM = rm
-
-DELOBJ = $(OBJ)
-
-# Windows OS variables & settings
-
-DEL = del
-
-EXE = .exe
-
-WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
-
-
-
-########################################################################
-
-####################### Targets beginning here #########################
-
-########################################################################
-
-
-
-all: $(APPNAME)
-
-
-
-# Builds the app
-
-$(APPNAME): $(OBJ)
-
-	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
-
-
-
-# Creates the dependecy rules
-
-%.d: $(SRCDIR)/%$(EXT)
-
-	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
-
-
-
-# Includes all .h files
-
--include $(DEP)
-
-
-
-# Building rule for .o files and its .c/.cpp in combination with all .h
-
-$(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
-
-	$(CC) $(CXXFLAGS) -o $@ -c $<
-
-
-
-################### Cleaning rules for Unix-based OS ###################
-
-# Cleans complete project
-
-.PHONY: clean
+$(BIN)/$(SERVER_EXE): $(SERVER_SRC)/*.cpp $(COMMON)/*.cpp  
+	$(CXX) $(CXX_FLAGS) -I$(COMMON) -I$(INClUDE_SERVER) -L$(LIB)  $^ -o $@ $(LIBRARIES)
 
 clean:
-
-	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
-
-
-
-# Cleans only all files with the extension .d
-
-.PHONY: cleandep
-
-cleandep:
-
-	$(RM) $(DEP)
-
-
-
-#################### Cleaning rules for Windows OS #####################
-
-# Cleans complete project
-
-.PHONY: cleanw
-
-cleanw:
-
-	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
-
-
-
-# Cleans only all files with the extension .d
-
-.PHONY: cleandepw
-
-cleandepw:
-
-	$(DEL) $(DEP)
+	-rm $(BIN)/*

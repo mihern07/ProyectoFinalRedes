@@ -5,8 +5,8 @@
 #include <iostream>
 #include <pthread.h>
 
-#include <Common/Message.h>
-#include <Common/Socket.h>
+#include "Message.h"
+#include "Socket.h"
 // #include "InputInfo.h"
 #include "ServerGame.h"
 

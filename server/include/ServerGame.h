@@ -39,8 +39,6 @@ public:
 
 private: 
 
-    void InitPlayers(); //Creates depending if Player 1 || Player 2 
-
     Server* _server = nullptr;
 
     bool _gameLost = false; //true when a player has collided

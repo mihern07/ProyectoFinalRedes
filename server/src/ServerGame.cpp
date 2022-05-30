@@ -1,4 +1,4 @@
-#include <server/include/ServerGame.h>
+#include "ServerGame.h"
 // #include "InputInfo.h"
 #include "Server.h"
 #include "Message.h"
@@ -13,7 +13,7 @@ ServerGame::ServerGame(Server* server) : _server(server)
 //Initializes game (tilemap, players, fruit)
 void ServerGame::Init()
 {
-    InitPlayers();
+    
 }
 
 //Updates active GameObjects
