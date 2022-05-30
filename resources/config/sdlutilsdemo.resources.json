@@ -8,12 +8,15 @@
   
   "images" : [
     { "id" : "sdl_logo", "file" : "resources/images/SDL_logo.png" },
-    { "id" : "textBox", "file" : "resources/images/dialogBox.png" }
+    { "id" : "textBox", "file" : "resources/images/dialogBox.png" },
+    { "id" : "rancia", "file" : "resources/images/rancia.png" }
+
   ],
   
   "messages" : [
     { "id" : "PressAnyKey", "text" : "Press Any Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff" },
-    { "id" : "mainText2", "text" : "Lorem ipsum no se que no se cual. Lorem ipsum no se que.", "font" : "ARIAL16", "color" : "0x0000ffff"}
+    { "id" : "mainText2", "text" : "Lorem ipsum no se que no se cual. Lorem ipsum no se que.", "font" : "ARIAL16", "color" : "0x0000ffff"},
+    { "id" : "prueba1", "text" : "Blablabla texto de prueba esto es de prueba", "font" : "ARIAL16", "color" : "0x0000ffff"}
   ],
   
   "sounds" : [

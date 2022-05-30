@@ -32,7 +32,9 @@ void sdlutils_basic_demo() {
 	SDL_Renderer *renderer = sdl.renderer();
 
 	// we can take textures from the predefined ones, and we can create a custom one as well
-	auto &sdlLogo = sdl.images().at("sdl_logo");
+	auto &dialogBox = sdl.images().at("textBox");
+	auto &rancia = sdl.images().at("rancia");
+
 	auto &helloSDL = sdl.msgs().at("mainText2");
 	Texture pressAnyKey(renderer, "Press any key to exit",
 			sdl.fonts().at("ARIAL24"), build_sdlcolor(0x112233ff),
@@ -45,8 +47,8 @@ void sdlutils_basic_demo() {
 	auto y0 = (winHeight - pressAnyKey.height()) / 2;
 	auto x1 = 0;
 	auto y1 = y0 - 4 * pressAnyKey.height();
-	auto x2 = (winWidth - sdlLogo.width()) / 2;
-	auto y2 = y0 + 2 * pressAnyKey.height();
+	auto x2 = (winWidth - dialogBox.width()) / 2;
+	auto y2 =(winHeight - dialogBox.height()) ;
 
 	// start the music in a loop
 	sdl.musics().at("beat").play();
@@ -81,8 +83,9 @@ void sdlutils_basic_demo() {
 		pressAnyKey.render(x0, y0);
 
 		// render the SDLogo
-		sdlLogo.render(x2, y2);
+		dialogBox.render(x2, y2);
 
+		rancia.render(winWidth/4,winHeight-rancia.height());
 		// present new frame
 		sdl.presentRenderer();
 
