@@ -1,78 +1,19 @@
 #include <iostream>
-#include "Platform.h"
-#include "Renderer.h"
-#include "Input.h"
-#include "ClientGame.h"
-#include <time.h>
-#include <SDL2/SDL.h>
-#include "Client.h"
 
-#include "Scene.h"
+#include "sdlutils_demo.h"
 
-int main() 
-{
-    std::cout << "Initializing...\n";
-
-    //Initialize SDL 
-    if(!Platform::Init())
-        return 1;
-    if(!Renderer::Init())
-        return 1;
-    Input::Init();
-
-    ClientGame game; 
-    Client::Init("127.0.0.1", "7777", &game);
-
-    bool applicationClosed = false;
-    
-    while(!Client::InitGame() && !applicationClosed) 
-    {    
-        if(!Platform::Tick()) 
-            applicationClosed = true;
+int main(int ac, char **av) {
+    try {
+        sdlutils_basic_demo();
+    } catch (const std::string &e) { // catch exceptions thrown as strings
+        std::cerr << e << std::endl;
+    } catch (const char *e) { // catch exceptions thrown as char*
+        std::cerr << e << std::endl;
+    } catch (const std::exception &e) { // catch exceptions thrown as a sub-type of std::exception
+        std::cerr << e.what();
+    } catch (...) {
+        std::cerr << "Caught and exception of unknown type ...";
     }
-
-    if(!applicationClosed)
-    {
-        game.Init(); //initialize GameObjects
-
-        std::cout << "Waiting for other players\n";
-
-        Client::SendGameReady(); //game is ready 
-
-        while(!Client::StartGame() && !applicationClosed) //wait until server is ready
-        {
-            if(!Platform::Tick()) 
-                applicationClosed = true;
-        }
-
-        std::cout << "Start game\n";
-        
-        
-
-        //game loop
-        while(!applicationClosed && Platform::Tick())
-        {
-            Input::Tick(); //register input
-    
-            // Client::SendInput(Input::GetInputInfo());
-    
-            //Render
-            Renderer::Clear(0); //clears last frame
-            game.Render();  //render new frame
-            Renderer::Present(); //display the new frame buffer  
-            Platform::Delay(125); 
-        }
-    }
-
-    //Release client resources
-    Client::Release();
-
-    //Release SDL
-    Input::Release();   
-    Renderer::Release();
-    Platform::Release();
-        
-    std::cout << "Game closed\n";
 
     return 0;
 }

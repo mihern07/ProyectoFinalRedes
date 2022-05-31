@@ -25,7 +25,7 @@ Server::Server(const char * s, const char * p)
     _socket->Bind();
 
     _clients.reserve(MAX_PLAYERS);
-    // _playersInput = new InputInfo[MAX_PLAYERS];
+    // _playersInput = new InputInfo[MAX_PLAYERS]; 
 }
 
 //Receives and processes messages from clients

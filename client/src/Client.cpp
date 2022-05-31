@@ -3,23 +3,20 @@
 #include "Message.h"
 #include <iostream>
 #include <pthread.h>
-#include "ClientGame.h"
 
 #pragma region STATIC ATTRIBUTES
 
 Socket* Client::_socket = nullptr;
 volatile bool Client::_startGame = false;
 volatile bool Client::_initGame = false;
-ClientGame* Client::_game = nullptr;
 char Client::_id = '0';
 
 #pragma endregion
 
 //Initializes client's resources for connection with server
-void Client::Init(const char * s, const char * p, ClientGame* g)
+void Client::Init(const char * s, const char * p)
 {
     _socket = new Socket(s, p);
-    _game = g;
 
     //Create thread to receive messages from server
     pthread_t recvThread;

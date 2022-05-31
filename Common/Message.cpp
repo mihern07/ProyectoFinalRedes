@@ -7,7 +7,7 @@ Message::Message(){}
 Message::Message(const uint8_t type) : _type(type){} //LOGIN, LOGOUT, START
 
 // Message::Message(const uint8_t type, const InputInfo &info, char player) //INPUT
-//     : _type(type), _inputInfo(info), _player(player){}
+//     : _type(type), _inputInfo(info), _player(player){} 
 
 Message::Message(const uint8_t type, char player)  
     : _type(type), _player(player){}
@@ -51,7 +51,7 @@ void Message::to_bin()
         // memcpy((void*)tmp, &_player, sizeof(char));
         // tmp += sizeof(char);
 
-        // memcpy((void*)tmp, _inputInfo.toString().c_str(), sizeof(char) * (sizeof(InputInfo) + 1)); 
+        // memcpy((void*)tmp, _inputInfo.toString().c_str(), sizeof(char) * (sizeof(InputInfo) + 1));  
     }else if (_type == Message::NEW_DIALOGUE || _type == Message::NEW_WAITING_DIALOGUE){
         AllocData(sizeof(uint8_t) + (sizeof(char) * 32) * 2);
         char* tmp = _data;

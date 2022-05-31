@@ -12,9 +12,8 @@ public:
      * Initializes client's resources for connection with server
      * @param s ip to connect socket to 
      * @param p port to connect socket to
-     * @param g game reference 
      */
-    static void Init(const char * s, const char * p, ClientGame* g);
+    static void Init(const char * s, const char * p);
 
     /**
      * Releases resources
