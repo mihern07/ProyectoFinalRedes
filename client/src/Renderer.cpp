@@ -47,28 +47,28 @@ void Renderer::Clear(int color)
 }
 
 //Loads and returns an image texture
-SDL_Texture* Renderer::LoadImage(const char* path, int* width, int* height)
-{
-    SDL_Surface* image = SDL_LoadBMP(path); //load file
+// SDL_Texture* Renderer::LoadImage(const char* path, int* width, int* height)
+// {
+//     SDL_Surface* image = SDL_LoadBMP(path); //load file
     
-    if(image == nullptr)
-        std::cout << "Unable to load image! \nSDL_Error: " << SDL_GetError() << '\n';
+//     if(image == nullptr)
+//         std::cout << "Unable to load image! \nSDL_Error: " << SDL_GetError() << '\n';
     
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(_pRenderer, image); //create texture
+//     SDL_Texture* texture = SDL_CreateTextureFromSurface(_pRenderer, image); //create texture
 
-    if(texture == nullptr)
-        std::cout << "Unable to create texture! \nSDL_Error: " << SDL_GetError() << '\n';
+//     if(texture == nullptr)
+//         std::cout << "Unable to create texture! \nSDL_Error: " << SDL_GetError() << '\n';
 
 
-    //set surface width & height
-    *width = image->w;
-    *height = image->h;
+//     //set surface width & height
+//     *width = image->w;
+//     *height = image->h;
 
-    SDL_FreeSurface(image); //free temp surface
-    image = nullptr;
+//     SDL_FreeSurface(image); //free temp surface
+//     image = nullptr;
 
-    return texture;
-}
+//     return texture;
+// }
 
 //Release SDL renderer resources
 void Renderer::Release()

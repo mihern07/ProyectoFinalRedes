@@ -8,7 +8,7 @@ LIB		:= lib
 SERVER 	:= server
 CLIENT 	:= client
 
-LIBRARIES	:= -lSDL2 -lSDL2main -lpthread
+LIBRARIES	:= -lSDL2 -lSDL2main -lpthread -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lGL -g `sdl2-config --cflags --libs` 
 EXECUTABLE	:= snake
 SERVER_EXE	:= server
 SERVER_SRC := server/src

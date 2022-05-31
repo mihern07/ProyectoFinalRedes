@@ -7,6 +7,7 @@
 #include <SDL2/SDL.h>
 #include "Client.h"
 
+#include "Scene.h"
 
 int main() 
 {
@@ -45,6 +46,8 @@ int main()
         }
 
         std::cout << "Start game\n";
+        
+        
 
         //game loop
         while(!applicationClosed && Platform::Tick())
@@ -58,7 +61,6 @@ int main()
             game.Render();  //render new frame
             Renderer::Present(); //display the new frame buffer  
             Platform::Delay(125); 
-            //Platform::Delay(150);                
         }
     }
 

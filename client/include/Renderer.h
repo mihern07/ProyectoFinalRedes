@@ -49,7 +49,7 @@ public:
      * Loads an image texture
      * @return image texture 
      */
-    static SDL_Texture* LoadImage(const char* path, int* width, int* height);
+    // static SDL_Texture* LoadImage(const char* path, int* width, int* height);
 
 private:
 
