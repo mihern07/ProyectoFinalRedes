@@ -73,7 +73,7 @@ void Scene::initScene()
     // you can also use the inline method ih() that is defined in InputHandler.h
     auto &ih = *InputHandler::instance();
 
-    Client::Init("127.0.0.1", "7777");
+    Client::Init("127.0.0.1", "7777", this);
 
     while (!Client::InitGame())
     {

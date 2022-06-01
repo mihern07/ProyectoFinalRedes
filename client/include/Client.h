@@ -3,6 +3,7 @@
 
 class Socket;
 class ClientGame;
+class Scene;
 
 class Client
 {
@@ -13,7 +14,7 @@ public:
      * @param s ip to connect socket to 
      * @param p port to connect socket to
      */
-    static void Init(const char * s, const char * p);
+    static void Init(const char * s, const char * p, Scene* scene);
 
     /**
      * Releases resources
@@ -61,6 +62,7 @@ private:
     static volatile bool _startGame; //true to start game
     static volatile bool _initGame; //true to init game once player id has been saved
 
+    static Scene* _scene;
     static ClientGame* _game;
     static char _id; //player id -> Player 1 or Player 2 -> values: (0,1)
 };
