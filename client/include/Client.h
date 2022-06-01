@@ -42,6 +42,8 @@ public:
      */
     static void SendGameReady();
 
+    static void SendNextDialogue();
+
     /**
      * @return if ready to start game
      */

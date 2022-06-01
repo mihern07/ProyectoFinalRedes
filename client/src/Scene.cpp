@@ -104,8 +104,7 @@ void Scene::initScene()
             mousePosition->x = mouseAux.first;
             mousePosition->y = mouseAux.second;
             if (PointInRect(mousePosition, button))
-                // Client::sendNextDialogue();
-                std::cout<<"Odio Linux y odio a Poletti\n";
+                Client::SendNextDialogue();
         }
 
         // exit when you press ESCAPE

@@ -59,6 +59,11 @@ void Client::SendGameReady()
     _socket->send(msg, *_socket);
 }
 
+void Client::SendNextDialogue(){
+    Message msg(Message::NEXT_DIALOGUE);
+    _socket->send(msg, *_socket);
+}
+
 #pragma endregion
 
 //Method for receiving messages through thread
