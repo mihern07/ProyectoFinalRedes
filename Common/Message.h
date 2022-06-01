@@ -22,7 +22,6 @@ public:
     ~Message();
 
     void to_bin();
-
     int from_bin(char *data);
 
     /**
@@ -31,6 +30,9 @@ public:
      *    @return objeto serializado
      */
     inline char *data() { return _data; }
+
+    inline std::string getDialogue1(){ return _dialogueContent1; }
+    inline std::string getDialogue2(){ return _dialogueContent2; }
 
     /**
      *  @return tamaño del objeto serializado
@@ -61,6 +63,7 @@ public:
 
     char _player;
 
+
     // InputInfo _inputInfo;
 
 private:
@@ -76,6 +79,7 @@ private:
 
     std::string _dialogueContent1;
     std::string _dialogueContent2;
+
 
     Decision _decision;
 };

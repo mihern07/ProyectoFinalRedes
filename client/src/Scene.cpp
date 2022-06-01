@@ -104,8 +104,11 @@ void Scene::initScene()
             mousePosition->x = mouseAux.first;
             mousePosition->y = mouseAux.second;
             if (PointInRect(mousePosition, button))
-                // Client::sendNextDialogue();
-                std::cout<<"Odio Linux y odio a Poletti\n";
+            {
+
+                Client::sendNextDialogue();
+                std::cout << "Odio Linux y odio a Poletti\n";
+            }
         }
 
         // exit when you press ESCAPE
@@ -121,8 +124,6 @@ void Scene::initScene()
         // 	helloSDL.render(x1 - winWidth, y1);
         // x1 = (x1 + 5) % winWidth;
 
-
-
         // render the SDLogo
         dialogBox.render(destDialogBox);
 
@@ -136,7 +137,7 @@ void Scene::initScene()
 
         // render Press Any Key
         // pressAnyKey.render(x0, y0);
-        
+
         // present new frame
         sdl.presentRenderer();
 
@@ -168,7 +169,7 @@ void Scene::update()
 }
 
 // Change to the next dialog
-void Scene::nextDialog(std::string dialogue1, std::string dialogue2)
+void Scene::nextDialogue(std::string dialogue1, std::string dialogue2)
 {
 }
 

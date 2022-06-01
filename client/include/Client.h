@@ -21,6 +21,8 @@ public:
      */
     static void Release();
 
+    static void sendNextDialogue();
+
     /**
      * Method for receiving messages through thread
      */

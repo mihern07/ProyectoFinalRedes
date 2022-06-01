@@ -7,21 +7,21 @@
 
 #pragma region STATIC ATTRIBUTES
 
-Socket* Client::_socket = nullptr;
+Socket *Client::_socket = nullptr;
 volatile bool Client::_startGame = false;
 volatile bool Client::_initGame = false;
-Scene* Client::_scene = nullptr;
+Scene *Client::_scene = nullptr;
 char Client::_id = '0';
 
 #pragma endregion
 
-//Initializes client's resources for connection with server
-void Client::Init(const char * s, const char * p, Scene* scene)
+// Initializes client's resources for connection with server
+void Client::Init(const char *s, const char *p, Scene *scene)
 {
     _socket = new Socket(s, p);
     _scene = scene;
 
-    //Create thread to receive messages from server
+    // Create thread to receive messages from server
     pthread_t recvThread;
     pthread_attr_t attr;
 
@@ -29,30 +29,30 @@ void Client::Init(const char * s, const char * p, Scene* scene)
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
     int res = pthread_create(&recvThread, &attr, net_thread, NULL);
 
-    if(res != 0)
+    if (res != 0)
         std::cout << "Error, Thread was not created\n";
 
-    Login(); //login to server
+    Login(); // login to server
 }
 
 #pragma region SEND MESSAGES
 
-//Login to game server
+// Login to game server
 void Client::Login()
 {
     Message msg(Message::LOGIN);
-    _socket->send(msg, *_socket);   
+    _socket->send(msg, *_socket);
 }
 
-//Logout from game server
+// Logout from game server
 void Client::Logout()
 {
     Message msg(Message::LOGOUT);
     msg._player = _id;
-    _socket->send(msg, *_socket);  
+    _socket->send(msg, *_socket);
 }
 
-//Notify server game is ready to start
+// Notify server game is ready to start
 void Client::SendGameReady()
 {
     Message msg(Message::READY);
@@ -61,32 +61,41 @@ void Client::SendGameReady()
 
 #pragma endregion
 
-//Method for receiving messages through thread
-void* Client::net_thread(void*)
+// Method for receiving messages through thread
+void *Client::net_thread(void *)
 {
     while (true)
     {
-        Socket* server;
+        Socket *server;
         Message msg;
         _socket->recv(msg, server);
 
-        if(msg._type == Message::INIT) //game init
+        if (msg._type == Message::INIT) // game init
         {
             _id = msg._player;
             _initGame = true;
         }
-        else if(msg._type == Message::START) //game start
+        else if (msg._type == Message::START) // game start
         {
             _startGame = true;
         }
+        else if (msg._type == Message::NEW_DIALOGUE) // game start
+        {
+            _scene->nextDialogue(msg.getDialogue1(), msg.getDialogue2());
+        }
     }
-    
 }
 
-//Releases resources
+// Releases resources
 void Client::Release()
 {
     Logout();
     delete _socket;
     _socket = nullptr;
+}
+
+void Client::sendNextDialogue()
+{
+    Message msg(Message::NEXT_DIALOGUE);
+    _socket->send(msg, *_socket);
 }
