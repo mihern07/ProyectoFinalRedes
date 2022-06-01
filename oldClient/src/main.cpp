@@ -1,78 +1,78 @@
-#include <iostream>
-#include "Platform.h"
-#include "Renderer.h"
-#include "Input.h"
-#include "ClientGame.h"
-#include <time.h>
-#include <SDL2/SDL.h>
-#include "Client.h"
+// #include <iostream>
+// #include "Platform.h"
+// #include "Renderer.h"
+// #include "Input.h"
+// #include "ClientGame.h"
+// #include <time.h>
+// #include <SDL2/SDL.h>
+// #include "Client.h"
 
-#include "Scene.h"
+// #include "Scene.h"
 
-int main() 
-{
-    std::cout << "Initializing...\n";
+// int main() 
+// {
+//     std::cout << "Initializing...\n";
 
-    //Initialize SDL 
-    if(!Platform::Init())
-        return 1;
-    if(!Renderer::Init())
-        return 1;
-    Input::Init();
+//     //Initialize SDL  
+//     if(!Platform::Init())
+//         return 1;
+//     if(!Renderer::Init())
+//         return 1;
+//     Input::Init();
 
-    ClientGame game; 
-    Client::Init("127.0.0.1", "7777");
+//     ClientGame game; 
+//     Client::Init("127.0.0.1", "7777");
 
-    bool applicationClosed = false;
+//     bool applicationClosed = false;
     
-    while(!Client::InitGame() && !applicationClosed) 
-    {    
-        if(!Platform::Tick()) 
-            applicationClosed = true;
-    }
+//     while(!Client::InitGame() && !applicationClosed) 
+//     {    
+//         if(!Platform::Tick()) 
+//             applicationClosed = true;
+//     }
 
-    if(!applicationClosed)
-    {
-        game.Init(); //initialize GameObjects
+//     if(!applicationClosed)
+//     {
+//         game.Init(); //initialize GameObjects
 
-        std::cout << "Waiting for other players\n";
+//         std::cout << "Waiting for other players\n";
 
-        Client::SendGameReady(); //game is ready 
+//         Client::SendGameReady(); //game is ready 
 
-        while(!Client::StartGame() && !applicationClosed) //wait until server is ready
-        {
-            if(!Platform::Tick()) 
-                applicationClosed = true;
-        }
+//         while(!Client::StartGame() && !applicationClosed) //wait until server is ready
+//         {
+//             if(!Platform::Tick()) 
+//                 applicationClosed = true;
+//         }
 
-        std::cout << "Start game\n";
+//         std::cout << "Start game\n";
         
         
 
-        //game loop
-        while(!applicationClosed && Platform::Tick())
-        {
-            Input::Tick(); //register input
+//         //game loop
+//         while(!applicationClosed && Platform::Tick())
+//         {
+//             Input::Tick(); //register input
     
-            // Client::SendInput(Input::GetInputInfo());
+//             // Client::SendInput(Input::GetInputInfo());
     
-            //Render
-            Renderer::Clear(0); //clears last frame
-            game.Render();  //render new frame
-            Renderer::Present(); //display the new frame buffer  
-            Platform::Delay(125); 
-        }
-    }
+//             //Render
+//             Renderer::Clear(0); //clears last frame
+//             game.Render();  //render new frame
+//             Renderer::Present(); //display the new frame buffer  
+//             Platform::Delay(125); 
+//         }
+//     }
 
-    //Release client resources
-    Client::Release();
+//     //Release client resources
+//     Client::Release();
 
-    //Release SDL
-    Input::Release();   
-    Renderer::Release();
-    Platform::Release();
+//     //Release SDL
+//     Input::Release();   
+//     Renderer::Release();
+//     Platform::Release();
         
-    std::cout << "Game closed\n";
+//     std::cout << "Game closed\n";
 
-    return 0;
-}
+//     return 0;
+// }
