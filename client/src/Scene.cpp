@@ -45,8 +45,11 @@ void Scene::initScene()
     auto &pijaFlip = sdl.images().at("pijaFlip");
     auto &deprimida = sdl.images().at("deprimida");
 
-    auto &textLine1 = sdl.msgs().at("mainText2");
-    auto &textLine2 = sdl.msgs().at("mainText2");
+    auto &textLine1 = sdl.msgs().at("mainText0");
+    auto &textLine2 = sdl.msgs().at("mainText1");
+
+    text1 = &textLine1;
+    text2 = &textLine2;
     // Texture pressAnyKey(renderer, "Press any key to exit",
     //                     sdl.fonts().at("ZACHARY24"), build_sdlcolor(0x112233ff),
     //                     build_sdlcolor(0xffffffff));
@@ -131,9 +134,9 @@ void Scene::initScene()
         rancia.render(destRancia);
         pijaFlip.render(destPija);
 
-        textLine1.render(destLine1);
-        textLine2.render(destLine2);
-        textLine2.render(destLine3);
+        text1->render(destLine1);
+        text2->render(destLine2);
+        // textLine3.render(destLine3);
 
         // render Press Any Key
         // pressAnyKey.render(x0, y0);
@@ -169,8 +172,12 @@ void Scene::update()
 }
 
 // Change to the next dialog
-void Scene::nextDialogue(std::string dialogue1, std::string dialogue2)
+void Scene::nextDialogue(int dialogueNum1, int dialogueNum2)
 {
+    string aux = "mainText" + to_string(dialogueNum1);
+    cout << aux << "\n";
+    text1 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum1));
+    text2 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum2));
 }
 
 void Scene::newDecision()

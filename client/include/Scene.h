@@ -1,5 +1,6 @@
 #pragma once
-#include <string>
+
+class Texture;
 
 class Scene
 {
@@ -11,7 +12,7 @@ public:
     void update();
     // void changeDialog();
 
-    void nextDialogue(std::string dialogue1, std::string dialogue2);
+    void nextDialogue(int dialogue1,int dialogue2);
 
     void newDecision();
 
@@ -22,6 +23,6 @@ private:
     char player1;
     char player2;
 
-    // Texture player1Image;
-    // Texture player2Image;
+    Texture* text1;
+    Texture* text2;
 };

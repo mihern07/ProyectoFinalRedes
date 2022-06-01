@@ -81,7 +81,7 @@ void *Client::net_thread(void *)
         }
         else if (msg._type == Message::NEW_DIALOGUE) // game start
         {
-            _scene->nextDialogue(msg.getDialogue1(), msg.getDialogue2());
+            _scene->nextDialogue(msg.getDialogueNum1(), msg.getDialogueNum2());
         }
     }
 }

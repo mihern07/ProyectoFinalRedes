@@ -12,8 +12,8 @@ Message::Message(const uint8_t type) : _type(type){} //LOGIN, LOGOUT, START
 Message::Message(const uint8_t type, char player)  
     : _type(type), _player(player){}
 
-Message::Message(const uint8_t type, std::string dialogueContent1, std::string dialogueContent2)
-    : _type(type), _dialogueContent1(dialogueContent1), _dialogueContent2(dialogueContent2){}
+Message::Message(const uint8_t type, int dialogueNum1, int dialogueNum2)
+    : _type(type), _dialogueNum1(dialogueNum1), _dialogueNum2(dialogueNum2){}
 
 Message::Message(const uint8_t type, Decision decision)
     : _type(type), _decision(decision){}
@@ -59,11 +59,11 @@ void Message::to_bin()
         memcpy((void*)tmp, (void*)&_type, sizeof(uint8_t));
         tmp += sizeof(uint8_t);
 
-        memcpy((void*)tmp, (void*)&_dialogueContent1, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy((void*)tmp, (void*)&_dialogueNum1, sizeof(int));
+        tmp += sizeof(int);
 
-        memcpy((void*)tmp, (void*)&_dialogueContent2, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy((void*)tmp, (void*)&_dialogueNum2, sizeof(int));
+        tmp += sizeof(int);
     }else if (_type == Message::NEW_DECISION || _type == Message::NEW_WAITING_DECISION){
         AllocData(sizeof(uint8_t) + (sizeof(char) * 32) * 3);
         char* tmp = _data;
@@ -125,10 +125,10 @@ int Message::from_bin(char * data)
     if (_type == Message::NEW_SCENE || _type == Message::NEW_WAITING_SCENE){
 
     }else if (_type == Message::NEW_DIALOGUE || _type == Message::NEW_WAITING_DIALOGUE){
-        memcpy(&_dialogueContent1, tmp, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy(&_dialogueNum1, tmp, sizeof(int));
+        tmp += sizeof(int);
 
-        memcpy(&_dialogueContent2, tmp, sizeof(char) * 32);
+        memcpy(&_dialogueNum2, tmp, sizeof(int));
     }else if (_type == Message::NEW_DECISION || _type == Message::NEW_WAITING_DECISION){
         memcpy(&_decision.text1, tmp, sizeof(char) * 32);
         tmp += sizeof(char) * 32;

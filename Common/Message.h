@@ -16,7 +16,7 @@ public:
     // Message(const uint8_t type, const InputInfo &info, char player);
     Message(const uint8_t type, char player);
 
-    Message(const uint8_t type, std::string dialogueContent1, std::string dialogueContent2);
+    Message(const uint8_t type, int dialogueNum1, int dialogueNum2);
     Message(const uint8_t type, Decision decision);
 
     ~Message();
@@ -31,8 +31,8 @@ public:
      */
     inline char *data() { return _data; }
 
-    inline std::string getDialogue1(){ return _dialogueContent1; }
-    inline std::string getDialogue2(){ return _dialogueContent2; }
+    inline int getDialogueNum1(){ return _dialogueNum1; }
+    inline int getDialogueNum2(){ return _dialogueNum2; }
 
     /**
      *  @return tamaño del objeto serializado
@@ -77,8 +77,8 @@ private:
 
     char *_data = nullptr;
 
-    std::string _dialogueContent1;
-    std::string _dialogueContent2;
+    int _dialogueNum1;
+    int _dialogueNum2;
 
 
     Decision _decision;
