@@ -11,7 +11,7 @@ public:
     void update();
     // void changeDialog();
 
-    void nextDialogue(std::string dialogue1, std::string dialogue2);
+    void nextDialog(std::string dialogue1, std::string dialogue2);
 
     void newDecision();
 

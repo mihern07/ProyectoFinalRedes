@@ -59,11 +59,6 @@ void Client::SendGameReady()
     _socket->send(msg, *_socket);
 }
 
-void Client::SendNextDialogue(){
-    Message msg(Message::NEXT_DIALOGUE);
-    _socket->send(msg, *_socket);
-}
-
 #pragma endregion
 
 //Method for receiving messages through thread
@@ -83,9 +78,6 @@ void* Client::net_thread(void*)
         else if(msg._type == Message::START) //game start
         {
             _startGame = true;
-        }
-        else if(msg._type == Message::NEW_DIALOGUE){
-            _scene->nextDialogue(msg._dialogueContent1, msg._dialogueContent2);
         }
     }
     

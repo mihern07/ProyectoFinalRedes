@@ -62,8 +62,6 @@ public:
     char _player;
 
     // InputInfo _inputInfo;
-    std::string _dialogueContent1;
-    std::string _dialogueContent2;
 
 private:
     /**
@@ -76,6 +74,8 @@ private:
 
     char *_data = nullptr;
 
+    std::string _dialogueContent1;
+    std::string _dialogueContent2;
 
     Decision _decision;
 };
