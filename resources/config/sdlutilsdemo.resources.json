@@ -9,7 +9,9 @@
   "images" : [
     { "id" : "sdl_logo", "file" : "../resources/images/SDL_logo.png" },
     { "id" : "textBox", "file" : "../resources/images/dialogBox.png" },
-    { "id" : "rancia", "file" : "../resources/images/rancia.png" }
+    { "id" : "rancia", "file" : "../resources/images/rancia.png" },
+    { "id" : "pijaFlip", "file" : "../resources/images/pijaFlip.png" }
+
 
   ],
   

@@ -73,8 +73,8 @@ void SDLUtils::initWindow() {
 void SDLUtils::closeWindow() {
 
 	// destroy renderer and window
-	SDL_DestroyRenderer(renderer_);
 	SDL_DestroyWindow(window_);
+	SDL_DestroyRenderer(renderer_);
 
 	SDL_Quit(); // quit SDL
 }

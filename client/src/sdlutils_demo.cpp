@@ -12,11 +12,12 @@
 
 using namespace std;
 
-void sdlutils_basic_demo() {
+void sdlutils_basic_demo()
+{
 
 	// Initialise the SDLGame singleton
 	SDLUtils::init("SDLGame Demo!", 800, 600,
-			"../resources/config/sdlutilsdemo.resources.json");
+				   "../resources/config/sdlutilsdemo.resources.json");
 
 	// reference to the SDLUtils Singleton. You could use it as a pointer as well,
 	// I just prefer to use . instead of ->, it is just a matter of taste, nothing
@@ -27,20 +28,22 @@ void sdlutils_basic_demo() {
 	//
 	auto &sdl = *SDLUtils::instance();
 
-	//show the cursor
+	// show the cursor
 	sdl.showCursor();
 
 	// store the 'renderer' in a local variable, just for convenience
 	SDL_Renderer *renderer = sdl.renderer();
 
-	// we can take textures from the predefined ones, and we can create a custom one as well
+	// Dialog Box
 	auto &dialogBox = sdl.images().at("textBox");
+
 	auto &rancia = sdl.images().at("rancia");
+	auto &pijaFlip = sdl.images().at("pijaFlip");
 
 	auto &helloSDL = sdl.msgs().at("mainText2");
 	Texture pressAnyKey(renderer, "Press any key to exit",
-			sdl.fonts().at("ARIAL24"), build_sdlcolor(0x112233ff),
-			build_sdlcolor(0xffffffff));
+						sdl.fonts().at("ARIAL24"), build_sdlcolor(0x112233ff),
+						build_sdlcolor(0xffffffff));
 
 	// some coordinates
 	auto winWidth = sdl.width();
@@ -49,11 +52,12 @@ void sdlutils_basic_demo() {
 	auto y0 = (winHeight - pressAnyKey.height()) / 2;
 	auto x1 = 0;
 	auto y1 = y0 - 4 * pressAnyKey.height();
-	auto x2 = (winWidth - dialogBox.width()) / 2;
-	auto y2 =(winHeight - dialogBox.height()) ;
 
-	// start the music in a loop
-	sdl.musics().at("beat").play();
+	SDL_Rect destDialogBox = SDL_Rect{(winWidth - dialogBox.width() * 2) / 2, (winHeight - dialogBox.height() * 2), dialogBox.width() * 2, dialogBox.height() * 2};
+	SDL_Rect destRancia = SDL_Rect{20, winHeight - (rancia.height() * 4) - dialogBox.height() * 2 + 12, rancia.width() * 4, rancia.height() * 4};
+	SDL_Rect destPija = SDL_Rect{winWidth - pijaFlip.width() * 4 - 40, winHeight - (pijaFlip.height() * 4) - dialogBox.height() * 2 + 12, pijaFlip.width() * 4, pijaFlip.height() * 4};
+
+
 
 	// reference to the input handler (we could use a pointer, I just . rather than ->).
 	// you can also use the inline method ih() that is defined in InputHandler.h
@@ -61,20 +65,24 @@ void sdlutils_basic_demo() {
 
 	Client::Init("127.0.0.1", "7777");
 
-	while(!Client::InitGame()){
-
+	while (!Client::InitGame())
+	{
 	}
 
 	Client::SendGameReady();
 
-	while(!Client::StartGame()){
-
+	while (!Client::StartGame())
+	{
 	}
+
+	// start the music in a loop
+	sdl.musics().at("beat").play();
 
 	// a boolean to exit the loop
 	bool exit_ = false;
 
-	while (!exit_) {
+	while (!exit_)
+	{
 		Uint32 startTime = sdl.currRealTime();
 
 		// update the event handler
@@ -88,18 +96,20 @@ void sdlutils_basic_demo() {
 		sdl.clearRenderer();
 
 		// render Hello SDL
-		helloSDL.render(x1, y1);
-		if (x1 + helloSDL.width() > winWidth)
-			helloSDL.render(x1 - winWidth, y1);
-		x1 = (x1 + 5) % winWidth;
+		// helloSDL.render(x1, y1);
+		// if (x1 + helloSDL.width() > winWidth)
+		// 	helloSDL.render(x1 - winWidth, y1);
+		// x1 = (x1 + 5) % winWidth;
 
 		// render Press Any Key
 		pressAnyKey.render(x0, y0);
 
 		// render the SDLogo
-		dialogBox.render(x2, y2);
+		dialogBox.render(destDialogBox);
 
-		rancia.render(winWidth/4,winHeight-rancia.height());
+		rancia.render(destRancia);
+		pijaFlip.render(destPija);
+
 		// present new frame
 		sdl.presentRenderer();
 
@@ -109,11 +119,9 @@ void sdlutils_basic_demo() {
 			SDL_Delay(20 - frameTime);
 	}
 
-	//Release client resources
-    Client::Release();
+	// Release client resources
+	Client::Release();
 
 	// stop the music
 	Music::haltMusic();
-
 }
-
