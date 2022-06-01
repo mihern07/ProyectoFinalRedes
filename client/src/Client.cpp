@@ -79,6 +79,9 @@ void* Client::net_thread(void*)
         {
             _startGame = true;
         }
+        else if(msg._type == Message::NEW_DIALOGUE){
+            _scene->nextDialogue(msg._dialogueContent1, msg._dialogueContent2);
+        }
     }
     
 }

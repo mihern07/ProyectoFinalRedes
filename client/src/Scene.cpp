@@ -168,7 +168,7 @@ void Scene::update()
 }
 
 // Change to the next dialog
-void Scene::nextDialog(std::string dialogue1, std::string dialogue2)
+void Scene::nextDialogue(std::string dialogue1, std::string dialogue2)
 {
 }
 
