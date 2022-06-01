@@ -6,6 +6,7 @@
     { "id" : "ARIAL48", "file" : "../resources/fonts/ARIAL.ttf", "size": 48 },
     { "id" : "ZACHARY16", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 16 },
     { "id" : "ZACHARY24", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 24 },
+    { "id" : "ZACHARY36", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 36 },
     { "id" : "ZACHARY48", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 48 }
   ],
   
@@ -22,7 +23,14 @@
   
   "messages" : [
     { "id" : "PressAnyKey", "text" : "Press Any\\n Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff" },
-    { "id" : "mainText2", "text" : "Lorem ipsum no se que no se cual. Lorem ipsum no se que.", "font" : "ARIAL16", "color" : "0x0000ffff"},
+    { "id" : "mainText1", "text" : "Lorem ipsum no se que no se cual.1", "font" : "ZACHARY36", "color" : "0xffffffff"},
+    { "id" : "mainText2", "text" : "22222222222222222222222222222222", "font" : "ZACHARY36", "color" : "0xffffffff"},
+    { "id" : "mainText3", "text" : "3333333333333333333333", "font" : "ZACHARY36", "color" : "0xffffffff"},
+    { "id" : "mainText4", "text" : "4444444444444444444444444444", "font" : "ZACHARY36", "color" : "0xffffffff"},
+    { "id" : "mainText5", "text" : "4444444444444444444444444444", "font" : "ZACHARY36", "color" : "0xffffffff"},
+    { "id" : "mainText6", "text" : "4444444444444444444444444444", "font" : "ZACHARY36", "color" : "0xffffffff"},
+
+
     { "id" : "prueba1", "text" : "Blablabla texto de prueba esto es de prueba", "font" : "ARIAL16", "color" : "0x0000ffff"}
   ],
   
