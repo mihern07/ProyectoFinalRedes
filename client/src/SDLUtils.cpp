@@ -18,7 +18,7 @@ SDLUtils::SDLUtils(std::string windowTitle, int width, int height) :
 		fontsAccessWrapper_(fonts_, "Fonts Table"), //
 		imagesAccessWrapper_(images_, "Images Table"), //
 		msgsAccessWrapper_(msgs_, "Messages Table"), //
-		soundsAccessWrapper_(sounds_, "Sounds Table"), //
+		soundsAccessWrapper_(sounds_, "Sounds Table"), // 
 		musicsAccessWrapper_(musics_, "Musics Table") ///
 {
 

@@ -8,6 +8,8 @@
 
 #include "Client.h"
 
+#include "Rectangle.h"
+
 using namespace std;
 
 Scene::Scene()
@@ -43,24 +45,29 @@ void Scene::initScene()
     auto &pijaFlip = sdl.images().at("pijaFlip");
     auto &deprimida = sdl.images().at("deprimida");
 
-    auto &helloSDL = sdl.msgs().at("mainText2");
-    Texture pressAnyKey(renderer, "Press any key to exit",
-                        sdl.fonts().at("ZACHARY24"), build_sdlcolor(0x112233ff),
-                        build_sdlcolor(0xffffffff));
+    auto &textLine1 = sdl.msgs().at("mainText2");
+    auto &textLine2 = sdl.msgs().at("mainText2");
+    // Texture pressAnyKey(renderer, "Press any key to exit",
+    //                     sdl.fonts().at("ZACHARY24"), build_sdlcolor(0x112233ff),
+    //                     build_sdlcolor(0xffffffff));
 
     // some coordinates
     auto winWidth = sdl.width();
     auto winHeight = sdl.height();
-    auto x0 = (winWidth - pressAnyKey.width()) / 2;
-    auto y0 = (winHeight - pressAnyKey.height()) / 2;
-    auto x1 = 0;
-    auto y1 = y0 - 4 * pressAnyKey.height();
 
     SDL_Rect destDialogBox = SDL_Rect{(winWidth - dialogBox.width() * 2) / 2, (winHeight - dialogBox.height() * 2), dialogBox.width() * 2, dialogBox.height() * 2};
     SDL_Rect destRancia = SDL_Rect{20, winHeight - (rancia.height() * 4) - dialogBox.height() * 2 + 12, rancia.width() * 4, rancia.height() * 4};
     SDL_Rect destDeprimida = SDL_Rect{40 + rancia.width() + deprimida.width() / 2, winHeight - (deprimida.height() * 4) - dialogBox.height() * 2 + 12, deprimida.width() * 4, deprimida.height() * 4};
 
     SDL_Rect destPija = SDL_Rect{winWidth - pijaFlip.width() * 4 - 40, winHeight - (pijaFlip.height() * 4) - dialogBox.height() * 2 + 12, pijaFlip.width() * 4, pijaFlip.height() * 4};
+
+    SDL_Rect destLine1 = SDL_Rect{45, winHeight - dialogBox.height() - 65, textLine1.width(), textLine1.height()};
+    SDL_Rect destLine2 = SDL_Rect{45, winHeight - dialogBox.height() - 65 + textLine1.height() + 10, textLine1.width(), textLine1.height()};
+    SDL_Rect destLine3 = SDL_Rect{45, winHeight - dialogBox.height() - 65 + textLine1.height() + textLine2.height() + 10, textLine1.width(), textLine1.height()};
+
+    // Button
+    Rectangle *button = new Rectangle{destDialogBox.x, destDialogBox.y, destDialogBox.w, destDialogBox.h};
+    Point *mousePosition = new Point{0, 0};
 
     // reference to the input handler (we could use a pointer, I just . rather than ->).
     // you can also use the inline method ih() that is defined in InputHandler.h
@@ -79,7 +86,7 @@ void Scene::initScene()
     }
 
     // start the music in a loop
-    sdl.musics().at("beat").play();
+    // sdl.musics().at("beat").play();
 
     // a boolean to exit the loop
     bool exit_ = false;
@@ -91,8 +98,18 @@ void Scene::initScene()
         // update the event handler
         ih.refresh();
 
-        // exit when any key is down
-        if (ih.keyDownEvent())
+        if (ih.mouseButtonDownEvent())
+        {
+            auto mouseAux = ih.getMousePos();
+            mousePosition->x = mouseAux.first;
+            mousePosition->y = mouseAux.second;
+            if (PointInRect(mousePosition, button))
+                // Client::sendNextDialogue();
+                std::cout<<"Odio Linux y odio a Poletti\n";
+        }
+
+        // exit when you press ESCAPE
+        if (ih.isKeyDown(SDLK_ESCAPE))
             exit_ = true;
 
         // clear screen
@@ -113,8 +130,12 @@ void Scene::initScene()
         rancia.render(destRancia);
         pijaFlip.render(destPija);
 
+        textLine1.render(destLine1);
+        textLine2.render(destLine2);
+        textLine2.render(destLine3);
+
         // render Press Any Key
-        pressAnyKey.render(x0, y0);
+        // pressAnyKey.render(x0, y0);
         
         // present new frame
         sdl.presentRenderer();
