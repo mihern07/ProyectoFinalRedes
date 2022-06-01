@@ -3,20 +3,25 @@
   "fonts" : [
     { "id" : "ARIAL16", "file" : "../resources/fonts/ARIAL.ttf", "size": 16 },
     { "id" : "ARIAL24", "file" : "../resources/fonts/ARIAL.ttf", "size": 24 },
-    { "id" : "ARIAL48", "file" : "../resources/fonts/ARIAL.ttf", "size": 48 }
+    { "id" : "ARIAL48", "file" : "../resources/fonts/ARIAL.ttf", "size": 48 },
+    { "id" : "ZACHARY16", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 16 },
+    { "id" : "ZACHARY24", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 24 },
+    { "id" : "ZACHARY48", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 48 }
   ],
   
   "images" : [
     { "id" : "sdl_logo", "file" : "../resources/images/SDL_logo.png" },
     { "id" : "textBox", "file" : "../resources/images/dialogBox.png" },
     { "id" : "rancia", "file" : "../resources/images/rancia.png" },
-    { "id" : "pijaFlip", "file" : "../resources/images/pijaFlip.png" }
+    { "id" : "pijaFlip", "file" : "../resources/images/pijaFlip.png" },
+    { "id" : "deprimida", "file" : "../resources/images/deprimida.png" }
+
 
 
   ],
   
   "messages" : [
-    { "id" : "PressAnyKey", "text" : "Press Any Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff" },
+    { "id" : "PressAnyKey", "text" : "Press Any\\n Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff" },
     { "id" : "mainText2", "text" : "Lorem ipsum no se que no se cual. Lorem ipsum no se que.", "font" : "ARIAL16", "color" : "0x0000ffff"},
     { "id" : "prueba1", "text" : "Blablabla texto de prueba esto es de prueba", "font" : "ARIAL16", "color" : "0x0000ffff"}
   ],

@@ -3,6 +3,8 @@
 class Scene
 {
 public:
+    Scene();
+    void initScene();
     void newScene();
 
     void update();
@@ -11,7 +13,6 @@ public:
     void nextDialog();
 
     void newDecision();
-
 
     void changePlayer1Image();
     void changePlayer2Image();
@@ -22,5 +23,4 @@ private:
 
     // Texture player1Image;
     // Texture player2Image;
-
 };

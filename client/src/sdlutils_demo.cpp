@@ -39,6 +39,7 @@ void sdlutils_basic_demo()
 
 	auto &rancia = sdl.images().at("rancia");
 	auto &pijaFlip = sdl.images().at("pijaFlip");
+	auto &maloMaloso = sdl.images().at("maloMaloso");
 
 	auto &helloSDL = sdl.msgs().at("mainText2");
 	Texture pressAnyKey(renderer, "Press any key to exit",
@@ -55,6 +56,8 @@ void sdlutils_basic_demo()
 
 	SDL_Rect destDialogBox = SDL_Rect{(winWidth - dialogBox.width() * 2) / 2, (winHeight - dialogBox.height() * 2), dialogBox.width() * 2, dialogBox.height() * 2};
 	SDL_Rect destRancia = SDL_Rect{20, winHeight - (rancia.height() * 4) - dialogBox.height() * 2 + 12, rancia.width() * 4, rancia.height() * 4};
+	SDL_Rect destMaloMaloso = SDL_Rect{20 + rancia.width() + maloMaloso.width()/2, winHeight - (maloMaloso.height() * 4) - dialogBox.height() * 2 + 12, maloMaloso.width() * 4, maloMaloso.height() * 4};
+
 	SDL_Rect destPija = SDL_Rect{winWidth - pijaFlip.width() * 4 - 40, winHeight - (pijaFlip.height() * 4) - dialogBox.height() * 2 + 12, pijaFlip.width() * 4, pijaFlip.height() * 4};
 
 
@@ -107,6 +110,7 @@ void sdlutils_basic_demo()
 		// render the SDLogo
 		dialogBox.render(destDialogBox);
 
+		maloMaloso.render(destMaloMaloso);
 		rancia.render(destRancia);
 		pijaFlip.render(destPija);
 
