@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class Scene
 {
@@ -10,7 +11,7 @@ public:
     void update();
     // void changeDialog();
 
-    void nextDialog();
+    void nextDialog(std::string dialogue1, std::string dialogue2);
 
     void newDecision();
 

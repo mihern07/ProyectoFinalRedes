@@ -146,6 +146,9 @@ void Scene::initScene()
             SDL_Delay(20 - frameTime);
     }
 
+    delete mousePosition;
+    delete button;
+
     // Release client resources
     Client::Release();
 
@@ -165,7 +168,7 @@ void Scene::update()
 }
 
 // Change to the next dialog
-void Scene::nextDialog()
+void Scene::nextDialog(std::string dialogue1, std::string dialogue2)
 {
 }
 
