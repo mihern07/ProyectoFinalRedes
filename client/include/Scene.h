@@ -13,11 +13,13 @@ public:
     void update();
     // void changeDialog();
 
-    void nextDialogue(int dialogue1, int dialogue2);
+    void nextDialogue(int dialogue1, int dialogue2, bool input);
 
-    void newDecision();
+    void newDecision(int button1, int button2, int button3, bool input);
 
+    void setInput(bool aux);
 private:
+    bool canInput;
     bool showButton;
 
     Texture *text1;

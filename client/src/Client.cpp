@@ -72,16 +72,37 @@ void *Client::net_thread(void *)
 
         if (msg._type == Message::INIT) // game init
         {
+
             _id = msg._player;
             _initGame = true;
+            if (_id == '0')
+            {
+                _scene->setInput(true);
+            }
+            else
+            {
+                _scene->setInput(false);
+            }
         }
         else if (msg._type == Message::START) // game start
         {
             _startGame = true;
         }
-        else if (msg._type == Message::NEW_DIALOGUE || msg._type == Message::NEW_WAITING_DIALOGUE) // game start
+        else if (msg._type == Message::NEW_DIALOGUE) // game start
         {
-            _scene->nextDialogue(msg.getDialogueNum1(), msg.getDialogueNum2());
+            _scene->nextDialogue(msg.getDialogueNum1(), msg.getDialogueNum2(), true);
+        }
+        else if (msg._type == Message::NEW_WAITING_DIALOGUE) // game start
+        {
+            _scene->nextDialogue(msg.getDialogueNum1(), msg.getDialogueNum2(), false);
+        }
+        else if (msg._type == Message::NEW_DECISION) // game start
+        {
+            _scene->newDecision(msg.getDecision1(), msg.getDecision2(), msg.getDecision3(), true);
+        }
+        else if (msg._type == Message::NEW_WAITING_DECISION) // game start
+        {
+            _scene->newDecision(msg.getDecision1(), msg.getDecision2(), msg.getDecision3(), false);
         }
     }
 }

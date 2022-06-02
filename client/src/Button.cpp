@@ -41,10 +41,10 @@ void Button::render()
     buttonText->render(dest);
 }
 
-void Button::changeButton()
+void Button::changeButton(int buttonId)
 {
-    numButton += 3;
-    buttonText = &sdlutils().msgs().at("button" + std::to_string(numButton));
+    numButton = buttonId;
+    buttonText = &sdlutils().msgs().at("mainText" + std::to_string(numButton));
 }
 
 Rectangle* Button::getRect()

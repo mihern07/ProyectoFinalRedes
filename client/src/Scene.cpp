@@ -58,7 +58,7 @@ void Scene::initScene()
     text2 = &textLine2;
     text3 = &textLine3;
 
-    //Constants
+    // Constants
     auto winWidth = sdl.width();
     auto winHeight = sdl.height();
 
@@ -101,8 +101,7 @@ void Scene::initScene()
 
     // a boolean to exit the loop
     bool exit_ = false;
-
-    showButton = true;
+    showButton = false;
     while (!exit_)
     {
         Uint32 startTime = sdl.currRealTime();
@@ -116,7 +115,7 @@ void Scene::initScene()
             mousePosition->x = mouseAux.first;
             mousePosition->y = mouseAux.second;
 
-            if (showButton)
+            if (showButton && canInput)
             {
                 if (PointInRect(mousePosition, b1->getRect()))
                 {
@@ -131,9 +130,8 @@ void Scene::initScene()
                     cout << "boton3\n";
                 }
             }
-            else if (PointInRect(mousePosition, button))
+            else if (canInput && PointInRect(mousePosition, button))
             {
-
                 Client::sendNextDialogue();
                 std::cout << "Odio Linux y odio a Poletti\n";
             }
@@ -191,20 +189,29 @@ void Scene::update()
 }
 
 // Cambia al siguiente dialogo
-void Scene::nextDialogue(int dialogueNum1, int dialogueNum2)
+void Scene::nextDialogue(int dialogueNum1, int dialogueNum2, bool input)
 {
-    //DEBUG
+    canInput = input;
+    // DEBUG
     string aux = "mainText" + to_string(dialogueNum1);
     cout << aux << "\n";
 
-
     text1 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum1));
     text2 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum2));
+    showButton = false;
 }
 
-void Scene::newDecision()
+void Scene::newDecision(int button1, int button2, int button3, bool input)
 {
-    b1->changeButton();
-    b2->changeButton();
-    b3->changeButton();
+    canInput = input;
+
+    showButton = true;
+    b1->changeButton(button1);
+    b2->changeButton(button2);
+    b3->changeButton(button3);
+}
+
+void Scene::setInput(bool aux)
+{
+    canInput = aux;
 }
