@@ -6,11 +6,11 @@
 Button::Button(int auxNum)
 {
     numButton = auxNum;
-    buttonText = &sdlutils().msgs().at("button" + std::to_string(numButton));
+    buttonText = &sdlutils().msgs().at("mainText" + std::to_string(numButton));
     int width = sdlutils().width();
     int height = sdlutils().height();
 
-    std::cout << "Button" + std::to_string(numButton);
+    std::cout << "mainText" + std::to_string(numButton);
     switch (numButton)
     {
     case 1:

@@ -119,21 +119,23 @@ void Scene::initScene()
             {
                 if (PointInRect(mousePosition, b1->getRect()))
                 {
+                    Client::sendDecisionChosen(1);
                     cout << "boton1\n";
                 }
                 else if (PointInRect(mousePosition, b2->getRect()))
                 {
+                    Client::sendDecisionChosen(2);
                     cout << "boton2\n";
                 }
                 else if (PointInRect(mousePosition, b3->getRect()))
                 {
+                    Client::sendDecisionChosen(3);
                     cout << "boton3\n";
                 }
             }
             else if (canInput && PointInRect(mousePosition, button))
             {
                 Client::sendNextDialogue();
-                std::cout << "Odio Linux y odio a Poletti\n";
             }
         }
 

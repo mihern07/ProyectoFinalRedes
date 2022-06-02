@@ -120,3 +120,8 @@ void Client::sendNextDialogue()
     Message msg(Message::NEXT_DIALOGUE);
     _socket->send(msg, *_socket);
 }
+
+void Client::sendDecisionChosen(int numButton){
+    Message msg(Message::CHOSE_DECISION, numButton);
+    _socket->send(msg, *_socket);
+}

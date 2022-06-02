@@ -156,15 +156,15 @@ void Server::ProcessMessages()
 
         case Message::NEXT_DIALOGUE:
         {
+            id = std::stoi(msgs_.at(std::to_string(id)).nextDialogue_);
             if (id + 2 <= maxDialogueNumber)
             {
-
-                if (msgs_.at(std::to_string(id + 1)).isDecision_ == "false")
+                if (msgs_.at(std::to_string(id)).isDecision_ == "false")
                 {
-                    Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
-                    Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
+                    Message msNew(Message::NEW_DIALOGUE, id, id + 1);
+                    Message msWaiting(Message::NEW_WAITING_DIALOGUE, id, id + 1);
 
-                    std::string personToSend = msgs_.at(std::to_string(id + 1)).person_;
+                    std::string personToSend = msgs_.at(std::to_string(id)).person_;
                     if (personToSend == "1")
                     {
                         _socket->send(msNew, *_client1);
@@ -175,16 +175,13 @@ void Server::ProcessMessages()
                         _socket->send(msNew, *_client2);
                         _socket->send(msWaiting, *_client1);
                     }
-
-                    id += 2;
                 }
                 else
                 {
-                    // Decision decision_ = Decision(msgs_.at(st::to_string(id+1)))
-                    Message msNew(Message::NEW_DECISION, (id + 1), (id + 2), (id + 3));
-                    Message msWaiting(Message::NEW_WAITING_DECISION, (id + 1), (id + 2), (id + 3));
+                    Message msNew(Message::NEW_DECISION, id, id + 1, id + 2);
+                    Message msWaiting(Message::NEW_WAITING_DECISION, id, id + 1, id + 2);
 
-                    std::string personToSend = msgs_.at(std::to_string(id + 1)).person_;
+                    std::string personToSend = msgs_.at(std::to_string(id)).person_;
                     if (personToSend == "1")
                     {
                         _socket->send(msNew, *_client1);
@@ -202,13 +199,13 @@ void Server::ProcessMessages()
 
         case Message::CHOSE_DECISION:
         {
-            id = std::stoi(msgs_.at(std::to_string(id + msg.getNextDialogue())).nextDialogue_);
+            id = std::stoi(msgs_.at(std::to_string(id + msg.getNextDialogue() - 1)).nextDialogue_);
             if (id + 2 <= maxDialogueNumber)
             {
-                Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
-                Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
+                Message msNew(Message::NEW_DIALOGUE, id, id + 1);
+                Message msWaiting(Message::NEW_WAITING_DIALOGUE, id, id + 1);
 
-                std::string personToSend = msgs_.at(std::to_string(id + 1)).person_;
+                std::string personToSend = msgs_.at(std::to_string(id)).person_;
                 if (personToSend == "1")
                 {
                     _socket->send(msNew, *_client1);

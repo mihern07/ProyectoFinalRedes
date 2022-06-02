@@ -22,25 +22,20 @@
   ],
   
   "messages" : [
-    { "id" : "button1", "text" : "button1", "font" : "ZACHARY48", "color" : "0x112233ff", "bg" : "0xffffffff", "idNum" : "901", "person" : "1", "isDecision" : "false", "nextDialogue" : "1000" },
-    { "id" : "button2", "text" : "button2", "font" : "ZACHARY48", "color" : "0x112233ff", "bg" : "0xffffffff", "idNum" : "902", "person" : "1", "isDecision" : "false", "nextDialogue" : "1000" },
-    { "id" : "button3", "text" : "button3", "font" : "ZACHARY48", "color" : "0x112233ff", "bg" : "0xffffffff", "idNum" : "903", "person" : "1", "isDecision" : "false", "nextDialogue" : "1000" },
-    { "id" : "PressAnyKey", "text" : "Press Any\\n Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff", "idNum" : "904", "person" : "1", "isDecision" : "false", "nextDialogue" : "1000" },
     { "id" : "mainText0", "text" : "000000000000000000000000000000000", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "0", "person" : "1", "isDecision" : "false", "nextDialogue" : "2"},
     { "id" : "mainText1", "text" : "Lorem ipsum no se que no se cual.1", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "1", "person" : "1", "isDecision" : "false", "nextDialogue" : "2"},
-    { "id" : "mainText2", "text" : "22222222222222222222222222222222", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "2", "person" : "1", "isDecision" : "false", "nextDialogue" : "4"},
-    { "id" : "mainText3", "text" : "3333333333333333333333", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "3", "person" : "1", "isDecision" : "false", "nextDialogue" : "4"},
-    { "id" : "mainText4", "text" : "4444444444444444444444444444", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "4", "person" : "1", "isDecision" : "false", "nextDialogue" : "6"},
+    { "id" : "mainText2", "text" : "22222222222222222222222222222222", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "2", "person" : "1", "isDecision" : "true", "nextDialogue" : "8"},
+    { "id" : "mainText3", "text" : "3333333333333333333333", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "3", "person" : "1", "isDecision" : "false", "nextDialogue" : "10"},
+    { "id" : "mainText4", "text" : "4444444444444444444444444444", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "4", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
     { "id" : "mainText5", "text" : "5555555555555555555555555", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "5", "person" : "1", "isDecision" : "false", "nextDialogue" : "6"},
     { "id" : "mainText6", "text" : "666666666666666666666666666", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "6", "person" : "1", "isDecision" : "false", "nextDialogue" : "8"},
     { "id" : "mainText7", "text" : "777777777777777777777777", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "7", "person" : "1", "isDecision" : "false", "nextDialogue" : "8"},
     { "id" : "mainText8", "text" : "8888888888888888888888888", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "8", "person" : "1", "isDecision" : "false", "nextDialogue" : "10"},
     { "id" : "mainText9", "text" : "9999999999999999999999999", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "9", "person" : "1", "isDecision" : "false", "nextDialogue" : "10"},
     { "id" : "mainText10", "text" : "10101010101010101010101010", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "10", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
-    { "id" : "mainText10", "text" : "11111111111111111111111111", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "11", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
-
-
-    { "id" : "prueba1", "text" : "Blablabla texto de prueba esto es de prueba", "font" : "ARIAL16", "color" : "0x0000ffff", "idNum" : "1000", "person" : "1", "isDecision" : "false", "nextDialogue" : "1000"}
+    { "id" : "mainText11", "text" : "11111111111111111111111111", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "11", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
+    { "id" : "mainText12", "text" : "12121212121212121212121212", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "12", "person" : "1", "isDecision" : "false", "nextDialogue" : "14"},
+    { "id" : "mainText13", "text" : "13131313131313131313131313", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "13", "person" : "1", "isDecision" : "false", "nextDialogue" : "14"}
   ],
   
   "sounds" : [

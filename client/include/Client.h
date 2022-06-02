@@ -23,6 +23,8 @@ public:
 
     static void sendNextDialogue();
 
+    static void sendDecisionChosen(int numButton);
+
     /**
      * Method for receiving messages through thread
      */
