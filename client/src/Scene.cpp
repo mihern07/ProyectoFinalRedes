@@ -25,7 +25,7 @@ void Scene::initScene()
 {
 
     // Initialise the SDLGame singleton
-    SDLUtils::init("Proyecto Redes", 800, 600,
+    SDLUtils::init("La Prueba VN (Pulsa ESC para salir)", 800, 600,
                    "../resources/config/sdlutilsdemo.resources.json");
 
     // reference to the SDLUtils Singleton. You could use it as a pointer as well,
@@ -86,21 +86,38 @@ void Scene::initScene()
 
     Client::Init("127.0.0.1", "7777", this);
 
-    while (!Client::InitGame())
+    // a boolean to exit the loop
+    bool exit_ = false;
+
+    sdl.clearRenderer();
+
+    sdl.presentRenderer();
+
+    while (!Client::InitGame() && !exit_)
     {
+        ih.refresh();
+
+        if (ih.isKeyDown(SDLK_ESCAPE))
+            exit_ = true;
     }
 
-    Client::SendGameReady();
+    if (!exit_){
+        Client::SendGameReady();
 
-    while (!Client::StartGame())
-    {
+        while (!Client::StartGame() && !exit_)
+        {
+            ih.refresh();
+
+            if (ih.isKeyDown(SDLK_ESCAPE))
+            exit_ = true;
+        }
     }
+
+    
 
     // start the music in a loop
     // sdl.musics().at("beat").play();
 
-    // a boolean to exit the loop
-    bool exit_ = false;
     showButton = false;
     while (!exit_)
     {
@@ -162,7 +179,6 @@ void Scene::initScene()
             b1->render();
             b2->render();
             b3->render();
-            // cout << "renderizo cosas\n";
         }
 
         // present new frame

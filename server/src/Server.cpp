@@ -36,7 +36,7 @@ Server::Server(const char *s, const char *p)
 // Receives and processes messages from clients
 void Server::ProcessMessages()
 {
-    std::cout << "Snake server is running\n"
+    std::cout << "Server is running\n"
               << "Waiting for players to join\n";
     int playersReady = 0;
     int inputRecv = 0;
@@ -61,12 +61,9 @@ void Server::ProcessMessages()
         std::cout << "Something went wrong while load/parsing 'counter.json'";
     }
 
-    std::cout << "All ok\n";
-
     // we know the root is JSONObject
     JSONObject root = jValueRoot2->AsObject();
     JSONValue2 *jValue = nullptr;
-    std::cout << "Lo hace\n";
 
     // load messages
     jValue = root["messages"];
@@ -99,7 +96,6 @@ void Server::ProcessMessages()
             throw "'messages' is not an array in 'sdlutilsdemo.resources.json'";
         }
     }
-    std::cout << "Llega al final\n";
 
     _client1 = nullptr;
     _client2 = nullptr;
@@ -117,15 +113,11 @@ void Server::ProcessMessages()
             {
                 if (_client1 != nullptr)
                 {
-                    std::cout << "Creado 2\n";
                     _client2 = client;
                 }
                 else
                 {
-                    std::cout << "Creado 1\n";
-                    // std::cout<<client->sd<<"\n";
                     _client1 = client;
-                    // std::cout<<_client1->sd<<"\n";
                 }
                 numRegisteredClients++;
                 std::cout << "Player " << numRegisteredClients << " joined the game\n";
@@ -222,17 +214,17 @@ void Server::ProcessMessages()
         break;
 
         case Message::LOGOUT:
-            if (msg._player = 0 + '0')
+            if (msg._player == '0')
             {
                 int id = (msg._player - '0') + 1;
-                std::cout << "Player exited game" << std::endl;
+                std::cout << "Player 1 exited game" << std::endl;
                 delete _client1;
                 _client1 = nullptr;
             }
-            else if (msg._player == 1 + '0')
+            else if (msg._player == '1')
             {
                 int id = (msg._player - '0') + 1;
-                std::cout << "Player exited game" << std::endl;
+                std::cout << "Player 2 exited game" << std::endl;
                 delete _client2;
                 _client2 = nullptr;
             }
