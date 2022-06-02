@@ -43,53 +43,63 @@ void Server::ProcessMessages()
     int id = 1;
 
     // TODO check the correctness of values and issue a corresponding
-	// exception. Now we just do some simple checks, and assume input
-	// is correct.
+    // exception. Now we just do some simple checks, and assume input
+    // is correct.
 
-	// Load JSON configuration file. We use a unique pointer since we
-	// can exit the method in different ways, this way we guarantee that
-	// it is always deleted
+    // Load JSON configuration file. We use a unique pointer since we
+    // can exit the method in different ways, this way we guarantee that
+    // it is always deleted
 
     // int sdlInit_ret = SDL_Init(SDL_INIT_EVERYTHING);
 
-	std::unique_ptr<JSONValue2> jValueRoot2(JSON2::ParseFromFile("../resources/config/sdlutilsdemo.resources.json"));
+    std::unique_ptr<JSONValue2> jValueRoot2(JSON2::ParseFromFile("../resources/config/sdlutilsdemo.resources.json"));
 
-	// check it was loaded correctly
-	// the root must be a JSON object
-	if (jValueRoot2 == nullptr || !jValueRoot2->IsObject()) {
-		std::cout<<"Something went wrong while load/parsing 'counter.json'";
-	}
+    // check it was loaded correctly
+    // the root must be a JSON object
+    if (jValueRoot2 == nullptr || !jValueRoot2->IsObject())
+    {
+        std::cout << "Something went wrong while load/parsing 'counter.json'";
+    }
 
-    std::cout<<"All ok\n";
+    std::cout << "All ok\n";
 
-	// we know the root is JSONObject
-	JSONObject root = jValueRoot2->AsObject();
-	JSONValue2 *jValue = nullptr;
-    std::cout<<"Lo hace\n";
+    // we know the root is JSONObject
+    JSONObject root = jValueRoot2->AsObject();
+    JSONValue2 *jValue = nullptr;
+    std::cout << "Lo hace\n";
 
     // load messages
-	jValue = root["messages"];
-	if (jValue != nullptr) {
-		if (jValue->IsArray()) {
-			msgs_.reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
-			for (auto &v : jValue->AsArray()) {
-				if (v->IsObject()) {
-					JSONObject vObj = v->AsObject();
-					std::string key = vObj["idNum"]->AsString();
+    jValue = root["messages"];
+    if (jValue != nullptr)
+    {
+        if (jValue->IsArray())
+        {
+            msgs_.reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
+            for (auto &v : jValue->AsArray())
+            {
+                if (v->IsObject())
+                {
+                    JSONObject vObj = v->AsObject();
+                    std::string key = vObj["idNum"]->AsString();
                     std::string txt = vObj["person"]->AsString();
                     std::string isDecision = vObj["isDecision"]->AsString();
+                    std::string nextDialogue = vObj["nextDialogue"]->AsString();
                     maxDialogueNumber++;
-                    neededInfo aux = neededInfo(txt, isDecision);
+                    neededInfo aux = neededInfo(txt, isDecision, nextDialogue);
                     msgs_.emplace(key, aux);
-				} else {
-					throw "'messages' array in 'sdlutilsdemo.resources.json' includes and invalid value";
-				}
-			}
-		} else {
-			throw "'messages' is not an array in 'sdlutilsdemo.resources.json'";
-		}
-	}
-    std::cout<<"Llega al final\n";
+                }
+                else
+                {
+                    throw "'messages' array in 'sdlutilsdemo.resources.json' includes and invalid value";
+                }
+            }
+        }
+        else
+        {
+            throw "'messages' is not an array in 'sdlutilsdemo.resources.json'";
+        }
+    }
+    std::cout << "Llega al final\n";
 
     _client1 = nullptr;
     _client2 = nullptr;
@@ -105,11 +115,14 @@ void Server::ProcessMessages()
         case Message::LOGIN:
             if (numRegisteredClients < MAX_PLAYERS) // add player
             {
-                if (_client1 != nullptr){
-                    std::cout<<"Creado 2\n";
+                if (_client1 != nullptr)
+                {
+                    std::cout << "Creado 2\n";
                     _client2 = client;
-                }else{
-                    std::cout<<"Creado 1\n";
+                }
+                else
+                {
+                    std::cout << "Creado 1\n";
                     // std::cout<<client->sd<<"\n";
                     _client1 = client;
                     // std::cout<<_client1->sd<<"\n";
@@ -117,7 +130,7 @@ void Server::ProcessMessages()
                 numRegisteredClients++;
                 std::cout << "Player " << numRegisteredClients << " joined the game\n";
 
-                Message ms(Message::INIT);                // notify client to init game and send player id
+                Message ms(Message::INIT);                     // notify client to init game and send player id
                 ms._player = (numRegisteredClients - 1) + '0'; // client is last player to join
                 _socket->send(ms, *client);
 
@@ -143,49 +156,84 @@ void Server::ProcessMessages()
 
         case Message::NEXT_DIALOGUE:
         {
-            if (id + 2 <= maxDialogueNumber){
+            if (id + 2 <= maxDialogueNumber)
+            {
 
-                if (msgs_.at(std::to_string(id+1)).isDecision_ == "false"){
+                if (msgs_.at(std::to_string(id + 1)).isDecision_ == "false")
+                {
                     Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
                     Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
 
-                    std::string personToSend = msgs_.at(std::to_string(id+1)).person_;
-                    if (personToSend == "1"){
+                    std::string personToSend = msgs_.at(std::to_string(id + 1)).person_;
+                    if (personToSend == "1")
+                    {
                         _socket->send(msNew, *_client1);
                         _socket->send(msWaiting, *_client2);
-                    }else{
+                    }
+                    else
+                    {
                         _socket->send(msNew, *_client2);
                         _socket->send(msWaiting, *_client1);
                     }
 
                     id += 2;
-                }else{
+                }
+                else
+                {
                     // Decision decision_ = Decision(msgs_.at(st::to_string(id+1)))
                     Message msNew(Message::NEW_DECISION, (id + 1), (id + 2), (id + 3));
                     Message msWaiting(Message::NEW_WAITING_DECISION, (id + 1), (id + 2), (id + 3));
 
-                    std::string personToSend = msgs_.at(std::to_string(id+1)).person_;
-                    if (personToSend == "1"){
+                    std::string personToSend = msgs_.at(std::to_string(id + 1)).person_;
+                    if (personToSend == "1")
+                    {
                         _socket->send(msNew, *_client1);
                         _socket->send(msWaiting, *_client2);
-                    }else{
+                    }
+                    else
+                    {
                         _socket->send(msNew, *_client2);
                         _socket->send(msWaiting, *_client1);
                     }
-
                     id += 3;
                 }
             }
         }
         break;
 
+        case Message::CHOSE_DECISION:
+        {
+            id = std::stoi(msgs_.at(std::to_string(id + msg.getNextDialogue() - 1)).nextDialogue_);
+            if (id + 2 <= maxDialogueNumber)
+            {
+                Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
+                Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
+
+                std::string personToSend = msgs_.at(std::to_string(id + 1)).person_;
+                if (personToSend == "1")
+                {
+                    _socket->send(msNew, *_client1);
+                    _socket->send(msWaiting, *_client2);
+                }
+                else
+                {
+                    _socket->send(msNew, *_client2);
+                    _socket->send(msWaiting, *_client1);
+                }
+            }
+        }
+        break;
+
         case Message::LOGOUT:
-            if (msg._player = 0 + '0'){
+            if (msg._player = 0 + '0')
+            {
                 int id = (msg._player - '0') + 1;
                 std::cout << "Player exited game" << std::endl;
                 delete _client1;
                 _client1 = nullptr;
-            }else if (msg._player == 1 + '0'){
+            }
+            else if (msg._player == 1 + '0')
+            {
                 int id = (msg._player - '0') + 1;
                 std::cout << "Player exited game" << std::endl;
                 delete _client2;
@@ -203,11 +251,13 @@ void Server::ProcessMessages()
 // Sends a message to all clients connected to the server
 void Server::SendToClients(Message msg)
 {
-    if (_client1 != nullptr){
+    if (_client1 != nullptr)
+    {
         _socket->send(msg, *_client1);
     }
-        
-    if (_client2 != nullptr){
+
+    if (_client2 != nullptr)
+    {
         _socket->send(msg, *_client2);
     }
     // for (Socket *sock : _clients)

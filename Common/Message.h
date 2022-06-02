@@ -18,6 +18,7 @@ public:
 
     Message(const uint8_t type, int dialogueNum1, int dialogueNum2);
     Message(const uint8_t type, int decision1, int decision2, int decision3);
+    Message(const uint8_t type, int nextDialogue);
 
     ~Message();
 
@@ -34,6 +35,12 @@ public:
     inline int getDialogueNum1(){ return _dialogueNum1; }
     inline int getDialogueNum2(){ return _dialogueNum2; }
 
+    inline int getDecision1(){ return _decision1; }
+    inline int getDecision2(){ return _decision2; }
+    inline int getDecision3(){ return _decision3; }
+
+    inline int getNextDialogue(){ return _nextDialogue; }
+
     /**
      *  @return tamaño del objeto serializado
      */
@@ -48,8 +55,6 @@ public:
         INIT,
         READY,
         START,
-        NEW_SCENE,
-        NEW_WAITING_SCENE,
         NEW_DIALOGUE,
         NEW_WAITING_DIALOGUE,
         NEW_DECISION,
@@ -84,6 +89,6 @@ private:
     int _decision2;
     int _decision3;
 
-    Decision _decision;
+    int _nextDialogue;
 };
 #endif

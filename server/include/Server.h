@@ -10,10 +10,12 @@ class Message;
 // struct InputInfo;
 
 struct neededInfo{
-    neededInfo(std::string person, std::string isDecision) : person_(person), isDecision_(isDecision){};
+    neededInfo(std::string person, std::string isDecision, std::string nextDialogue) :
+    person_(person), isDecision_(isDecision), nextDialogue_(nextDialogue){};
 
     std::string person_;
     std::string isDecision_;
+    std::string nextDialogue_;
 };
 
 class Server 
