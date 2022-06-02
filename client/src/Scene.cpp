@@ -46,11 +46,9 @@ void Scene::initScene()
 
     auto &textLine1 = sdl.msgs().at("mainText0");
     auto &textLine2 = sdl.msgs().at("mainText1");
-    auto &textLine3 = sdl.msgs().at("mainText3");
 
     text1 = &textLine1;
     text2 = &textLine2;
-    text3 = &textLine3;
 
     // Constants
     auto winWidth = sdl.width();
@@ -62,9 +60,8 @@ void Scene::initScene()
 
     SDL_Rect destPija = SDL_Rect{winWidth - pijaFlip.width() * 4 - 40, winHeight - (pijaFlip.height() * 4) - dialogBox.height() * 2 + 12, pijaFlip.width() * 4, pijaFlip.height() * 4};
 
-    SDL_Rect destLine1 = SDL_Rect{45, winHeight - dialogBox.height() - 65, textLine1.width(), textLine1.height()};
-    SDL_Rect destLine2 = SDL_Rect{45, winHeight - dialogBox.height() - 65 + textLine1.height() + 10, textLine2.width(), textLine2.height()};
-    SDL_Rect destLine3 = SDL_Rect{45, winHeight - dialogBox.height() - 65 + textLine1.height() + textLine2.height() + 10, textLine3.width(), textLine3.height()};
+    destLine1 = SDL_Rect{45, winHeight - dialogBox.height() - 40, textLine1.width(), textLine1.height()};
+    destLine2 = SDL_Rect{45, winHeight - dialogBox.height() - 40 + textLine1.height() + 10, textLine2.width(), textLine2.height()};
 
     // Button
     Rectangle *button = new Rectangle{destDialogueBox.x, destDialogueBox.y, destDialogueBox.w, destDialogueBox.h};
@@ -94,7 +91,8 @@ void Scene::initScene()
             exit_ = true;
     }
 
-    if (!exit_){
+    if (!exit_)
+    {
         Client::SendGameReady();
 
         while (!Client::StartGame() && !exit_)
@@ -102,11 +100,9 @@ void Scene::initScene()
             ih.refresh();
 
             if (ih.isKeyDown(SDLK_ESCAPE))
-            exit_ = true;
+                exit_ = true;
         }
     }
-
-    
 
     // start the music in a loop
     sdl.musics().at("beat").play();
@@ -163,7 +159,6 @@ void Scene::initScene()
 
         text1->render(destLine1);
         text2->render(destLine2);
-        text3->render(destLine3);
 
         if (showButton)
         {
@@ -207,6 +202,10 @@ void Scene::nextDialogue(int dialogueNum1, int dialogueNum2, bool input)
 
     text1 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum1));
     text2 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum2));
+    destLine1.w = text1->width();
+    destLine1.h = text1->height();
+    destLine2.w = text2->width();
+    destLine2.h = text2->height();
     showButton = false;
 }
 

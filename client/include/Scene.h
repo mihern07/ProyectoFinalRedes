@@ -1,8 +1,9 @@
 #pragma once
 
+#include "SDL2/SDL.h"
+
 class Texture;
 class Button;
-
 class Scene
 {
 public:
@@ -18,13 +19,16 @@ public:
     void newDecision(int button1, int button2, int button3, bool input);
 
     void setInput(bool aux);
+
 private:
     bool canInput;
     bool showButton;
 
     Texture *text1;
     Texture *text2;
-    Texture *text3;
+
+    SDL_Rect destLine1;
+    SDL_Rect destLine2;
 
     Button *b1;
     Button *b2;

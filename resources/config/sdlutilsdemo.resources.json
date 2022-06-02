@@ -1,50 +1,412 @@
 {
-
-  "fonts" : [
-    { "id" : "ARIAL16", "file" : "../resources/fonts/ARIAL.ttf", "size": 16 },
-    { "id" : "ARIAL24", "file" : "../resources/fonts/ARIAL.ttf", "size": 24 },
-    { "id" : "ARIAL48", "file" : "../resources/fonts/ARIAL.ttf", "size": 48 },
-    { "id" : "ZACHARY16", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 16 },
-    { "id" : "ZACHARY24", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 24 },
-    { "id" : "ZACHARY36", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 36 },
-    { "id" : "ZACHARY48", "file" : "../resources/fonts/ZacharyBinx.ttf", "size": 48 }
+  "fonts": [
+    {
+      "id": "ARIAL16",
+      "file": "../resources/fonts/ARIAL.ttf",
+      "size": 16
+    },
+    {
+      "id": "ARIAL24",
+      "file": "../resources/fonts/ARIAL.ttf",
+      "size": 24
+    },
+    {
+      "id": "ARIAL48",
+      "file": "../resources/fonts/ARIAL.ttf",
+      "size": 48
+    },
+    {
+      "id": "ZACHARY16",
+      "file": "../resources/fonts/ZacharyBinx.ttf",
+      "size": 16
+    },
+    {
+      "id": "ZACHARY24",
+      "file": "../resources/fonts/ZacharyBinx.ttf",
+      "size": 24
+    },
+    {
+      "id": "ZACHARY36",
+      "file": "../resources/fonts/ZacharyBinx.ttf",
+      "size": 36
+    },
+    {
+      "id": "ZACHARY48",
+      "file": "../resources/fonts/ZacharyBinx.ttf",
+      "size": 48
+    }
   ],
-  
-  "images" : [
-    { "id" : "sdl_logo", "file" : "../resources/images/SDL_logo.png" },
-    { "id" : "textBox", "file" : "../resources/images/dialogBox.png" },
-    { "id" : "rancia", "file" : "../resources/images/rancia.png" },
-    { "id" : "pijaFlip", "file" : "../resources/images/pijaFlip.png" },
-    { "id" : "deprimida", "file" : "../resources/images/deprimida.png" }
-
-
-
+  "images": [
+    {
+      "id": "sdl_logo",
+      "file": "../resources/images/SDL_logo.png"
+    },
+    {
+      "id": "textBox",
+      "file": "../resources/images/dialogBox.png"
+    },
+    {
+      "id": "rancia",
+      "file": "../resources/images/rancia.png"
+    },
+    {
+      "id": "pijaFlip",
+      "file": "../resources/images/pijaFlip.png"
+    },
+    {
+      "id": "deprimida",
+      "file": "../resources/images/deprimida.png"
+    }
   ],
-  
-  "messages" : [
-    { "id" : "mainText0", "text" : "000000000000000000000000000000000", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "0", "person" : "1", "isDecision" : "false", "nextDialogue" : "2"},
-    { "id" : "mainText1", "text" : "Lorem ipsum no se que no se cual.1", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "1", "person" : "1", "isDecision" : "false", "nextDialogue" : "2"},
-    { "id" : "mainText2", "text" : "22222222222222222222222222222222", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "2", "person" : "1", "isDecision" : "true", "nextDialogue" : "8"},
-    { "id" : "mainText3", "text" : "3333333333333333333333", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "3", "person" : "1", "isDecision" : "false", "nextDialogue" : "10"},
-    { "id" : "mainText4", "text" : "4444444444444444444444444444", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "4", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
-    { "id" : "mainText5", "text" : "5555555555555555555555555", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "5", "person" : "1", "isDecision" : "false", "nextDialogue" : "6"},
-    { "id" : "mainText6", "text" : "666666666666666666666666666", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "6", "person" : "1", "isDecision" : "false", "nextDialogue" : "8"},
-    { "id" : "mainText7", "text" : "777777777777777777777777", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "7", "person" : "1", "isDecision" : "false", "nextDialogue" : "8"},
-    { "id" : "mainText8", "text" : "8888888888888888888888888", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "8", "person" : "1", "isDecision" : "false", "nextDialogue" : "10"},
-    { "id" : "mainText9", "text" : "9999999999999999999999999", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "9", "person" : "1", "isDecision" : "false", "nextDialogue" : "10"},
-    { "id" : "mainText10", "text" : "10101010101010101010101010", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "10", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
-    { "id" : "mainText11", "text" : "11111111111111111111111111", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "11", "person" : "1", "isDecision" : "false", "nextDialogue" : "12"},
-    { "id" : "mainText12", "text" : "12121212121212121212121212", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "12", "person" : "1", "isDecision" : "false", "nextDialogue" : "14"},
-    { "id" : "mainText13", "text" : "13131313131313131313131313", "font" : "ZACHARY36", "color" : "0xffffffff", "idNum" : "13", "person" : "1", "isDecision" : "false", "nextDialogue" : "14"}
+  "messages": [
+    {
+      "id": "mainText0",
+      "text": "Pija: Vamos a ver, vosotras 2. O sea, habeis",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "0",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "2"
+    },
+    {
+      "id": "mainText1",
+      "text": "venido para intentar entrar en mi super club",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "1",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "2"
+    },
+    {
+      "id": "mainText2",
+      "text": "                  glam fashion kitch cool???",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "2",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "4"
+    },
+    {
+      "id": "mainText3",
+      "text": "                          SUPER TRENDY",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "3",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "4"
+    },
+    {
+      "id": "mainText4",
+      "text": "Rancia: Mira pijarrona, tu club me la suda,",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "4",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "6"
+    },
+    {
+      "id": "mainText5",
+      "text": "pero a mi amiga depre le hace ilu entrar y",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "5",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "6"
+    },
+    {
+      "id": "mainText6",
+      "text": "suplir sus carencias afectivas para sentirse",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "6",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "8"
+    },
+    {
+      "id": "mainText7",
+      "text": "parte de un colectivo que le apoya ",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "7",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "8"
+    },
+    {
+      "id": "mainText8",
+      "text": "Emm si bueno, algo asi, supongo...",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "8",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "10"
+    },
+    {
+      "id": "mainText9",
+      "text": " ",
+      "font": "ZACHARY36",
+      "color": "0xffffffff",
+      "idNum": "9",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "10"
+    },
+    {
+      "id": "mainText10",
+      "text": "Asi que eso, que queremos entrar y tal",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "10",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "12"
+    },
+    {
+      "id": "mainText11",
+      "text": " ",
+      "font": "ZACHARY36",
+      "color": "0xffffffff",
+      "idNum": "11",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "12"
+    },
+    {
+      "id": "mainText12",
+      "text": "Super iughh, no sirve solo con venir y",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "12",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "14"
+    },
+    {
+      "id": "mainText13",
+      "text": "presentaros con vuestras prendas horteras",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "13",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "14"
+    },
+    {
+      "id": "mainText14",
+      "text": "teneis que hacer un super Quiz para ver",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "14",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "16"
+    },
+    {
+      "id": "mainText15",
+      "text": "quien de las dos entra a mi super club",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "15",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "16"
+    },
+    {
+      "id": "mainText16",
+      "text": "Quiero entrar pero me encantan los retos",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "16",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "18"
+    },
+    {
+      "id": "mainText17",
+      "text": "asi que preparate rancia, que te voy a ganar",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "17",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "18"
+    },
+    {
+      "id": "mainText18",
+      "text": "No sabes con quien estas hablando",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "18",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "20"
+    },
+    {
+      "id": "mainText19",
+      "text": "amiga, te voy a destrozar.Estamos listas",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "19",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "20"
+    },
+    {
+      "id": "mainText20",
+      "text": " Okey, primera pregunta para la rancia",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "20",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "22"
+    },
+    {
+      "id": "mainText21",
+      "text": "                     ROSA Y ROJO???",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "21",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "22"
+    },
+    {
+      "id": "mainText22",
+      "text": "Patada en el ojo",
+      "font": "ZACHARY36",
+      "bg": "0x9404ffff",
+      "color": "0xffffffff",
+      "idNum": "22",
+      "person": "1",
+      "isDecision": "true",
+      "nextDialogue": "25"
+    },
+    {
+      "id": "mainText23",
+      "text": "Lo mejor del mundo",
+      "font": "ZACHARY36",
+      "bg": "0x9404ffff",
+      "color": "0xffffffff",
+      "idNum": "23",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "27"
+    },
+    {
+      "id": "mainText24",
+      "text": "ni fu ni fa",
+      "font": "ZACHARY36",
+      "bg": "0x9404ffff",
+      "color": "0xffffffff",
+      "idNum": "24",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "29"
+    },
+    {
+      "id": "mainText25",
+      "text": "COMO OSAS, ACASO VES MI OUTFIT??",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "25",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "31"
+    },
+    {
+      "id": "mainText26",
+      "text": "Mas quisieras tener mis prendas tan chick",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "26",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "31"
+    },
+    {
+      "id": "mainText27",
+      "text": "PREMIO.A ver si te lo aplicas y dejas de ",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "27",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "31"
+    },
+    {
+      "id": "mainText28",
+      "text": "combinar los colores tierra, no te favorecen",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "28",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "31"
+    },
+    {
+      "id": "mainText29",
+      "text": "Haz el favor y respondeme con asertividad",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "29",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "31"
+    },
+    {
+      "id": "mainText30",
+      "text": "la proxima vez, que para esto me voy",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "30",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "31"
+    },
+    {
+      "id": "mainText31",
+      "text": "En fin...siguiente pregunta para la triste",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "31",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "33"
+    },
+    {
+      "id": "mainText32",
+      "text": "Mayor referente para la moda actual:",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "32",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "33"
+    }
   ],
-  
-  "sounds" : [
-    { "id" : "wall_hit", "file" : "../resources/sound/wall_hit.wav" },
-    { "id" : "explosion", "file" : "../resources/sound/explosion.wav" }
+  "sounds": [
+    {
+      "id": "wall_hit",
+      "file": "../resources/sound/wall_hit.wav"
+    },
+    {
+      "id": "explosion",
+      "file": "../resources/sound/explosion.wav"
+    }
   ],
-
-  "musics" : [
-    { "id" : "beat", "file" : "../resources/sound/beat.wav" }
+  "musics": [
+    {
+      "id": "beat",
+      "file": "../resources/sound/beat.wav"
+    }
   ]
-
 }
