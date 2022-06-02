@@ -156,7 +156,8 @@ void Server::ProcessMessages()
 
         case Message::NEXT_DIALOGUE:
         {
-            id = std::stoi(msgs_.at(std::to_string(id)).nextDialogue_);
+            if (id + 2 <= maxDialogueNumber)
+                id = std::stoi(msgs_.at(std::to_string(id)).nextDialogue_);
             if (id + 2 <= maxDialogueNumber)
             {
                 if (msgs_.at(std::to_string(id)).isDecision_ == "false")
