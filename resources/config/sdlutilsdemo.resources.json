@@ -22,6 +22,9 @@
   ],
   
   "messages" : [
+    { "id" : "button1", "text" : "button1", "font" : "ZACHARY48", "color" : "0x112233ff", "bg" : "0xffffffff" },
+    { "id" : "button2", "text" : "button2", "font" : "ZACHARY48", "color" : "0x112233ff", "bg" : "0xffffffff" },
+    { "id" : "button3", "text" : "button3", "font" : "ZACHARY48", "color" : "0x112233ff", "bg" : "0xffffffff" },
     { "id" : "PressAnyKey", "text" : "Press Any\\n Key", "font" : "ARIAL24", "color" : "0x112233ff", "bg" : "0xffffffff" },
     { "id" : "mainText0", "text" : "000000000000000000000000000000000", "font" : "ZACHARY36", "color" : "0xffffffff"},
     { "id" : "mainText1", "text" : "Lorem ipsum no se que no se cual.1", "font" : "ZACHARY36", "color" : "0xffffffff"},

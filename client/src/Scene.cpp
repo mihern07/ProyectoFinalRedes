@@ -56,15 +56,13 @@ void Scene::initScene()
 
     text1 = &textLine1;
     text2 = &textLine2;
-    // Texture pressAnyKey(renderer, "Press any key to exit",
-    //                     sdl.fonts().at("ZACHARY24"), build_sdlcolor(0x112233ff),
-    //                     build_sdlcolor(0xffffffff));
+    text3 = &textLine3;
 
-    // some coordinates
+    //Constants
     auto winWidth = sdl.width();
     auto winHeight = sdl.height();
 
-    SDL_Rect destDialogBox = SDL_Rect{(winWidth - dialogBox.width() * 2) / 2, (winHeight - dialogBox.height() * 2), dialogBox.width() * 2, dialogBox.height() * 2};
+    SDL_Rect destDialogueBox = SDL_Rect{(winWidth - dialogBox.width() * 2) / 2, (winHeight - dialogBox.height() * 2), dialogBox.width() * 2, dialogBox.height() * 2};
     SDL_Rect destRancia = SDL_Rect{20, winHeight - (rancia.height() * 4) - dialogBox.height() * 2 + 12, rancia.width() * 4, rancia.height() * 4};
     SDL_Rect destDeprimida = SDL_Rect{40 + rancia.width() + deprimida.width() / 2, winHeight - (deprimida.height() * 4) - dialogBox.height() * 2 + 12, deprimida.width() * 4, deprimida.height() * 4};
 
@@ -75,7 +73,7 @@ void Scene::initScene()
     SDL_Rect destLine3 = SDL_Rect{45, winHeight - dialogBox.height() - 65 + textLine1.height() + textLine2.height() + 10, textLine3.width(), textLine3.height()};
 
     // Button
-    Rectangle *button = new Rectangle{destDialogBox.x, destDialogBox.y, destDialogBox.w, destDialogBox.h};
+    Rectangle *button = new Rectangle{destDialogueBox.x, destDialogueBox.y, destDialogueBox.w, destDialogueBox.h};
     Point *mousePosition = new Point{0, 0};
 
     b1 = new Button(1);
@@ -148,14 +146,8 @@ void Scene::initScene()
         // clear screen
         sdl.clearRenderer();
 
-        // render Hello SDL
-        // helloSDL.render(x1, y1);
-        // if (x1 + helloSDL.width() > winWidth)
-        // 	helloSDL.render(x1 - winWidth, y1);
-        // x1 = (x1 + 5) % winWidth;
-
         // render the SDLogo
-        dialogBox.render(destDialogBox);
+        dialogBox.render(destDialogueBox);
 
         deprimida.render(destDeprimida);
         rancia.render(destRancia);
@@ -163,6 +155,7 @@ void Scene::initScene()
 
         text1->render(destLine1);
         text2->render(destLine2);
+        text3->render(destLine3);
 
         if (showButton)
         {
@@ -171,10 +164,6 @@ void Scene::initScene()
             b3->render();
             // cout << "renderizo cosas\n";
         }
-        // text3.render(destLine3);
-
-        // render Press Any Key
-        // pressAnyKey.render(x0, y0);
 
         // present new frame
         sdl.presentRenderer();
@@ -195,36 +184,27 @@ void Scene::initScene()
     Music::haltMusic();
 }
 
-void Scene::newScene()
-{
-}
-
 void Scene::update()
 {
-
     // a boolean to exit the loop
     bool exit_ = false;
 }
 
-// Change to the next dialog
+// Cambia al siguiente dialogo
 void Scene::nextDialogue(int dialogueNum1, int dialogueNum2)
 {
+    //DEBUG
     string aux = "mainText" + to_string(dialogueNum1);
     cout << aux << "\n";
+
+
     text1 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum1));
     text2 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum2));
 }
 
 void Scene::newDecision()
 {
+    b1->changeButton();
+    b2->changeButton();
+    b3->changeButton();
 }
-
-// void Scene::changePlayer1Image(Texture newTexture)
-// {
-//     player1Image = newTexture;
-// }
-
-// void Scene::changePlayer2Image(Texture newTexture)
-// {
-//     player2Image = newTexture;
-// }

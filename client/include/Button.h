@@ -11,7 +11,7 @@ public:
     ~Button();
 
     void render();
-    void changeButton(int newNum);
+    void changeButton();
 
     Rectangle *getRect();
 private:

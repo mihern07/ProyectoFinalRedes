@@ -9,7 +9,6 @@ public:
     Scene();
     ~Scene();
     void initScene();
-    void newScene();
 
     void update();
     // void changeDialog();
@@ -18,14 +17,8 @@ public:
 
     void newDecision();
 
-    void changePlayer1Image();
-    void changePlayer2Image();
-
 private:
     bool showButton;
-
-    char player1;
-    char player2;
 
     Texture *text1;
     Texture *text2;

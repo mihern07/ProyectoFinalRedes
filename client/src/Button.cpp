@@ -41,9 +41,9 @@ void Button::render()
     buttonText->render(dest);
 }
 
-void Button::changeButton(int newNum)
+void Button::changeButton()
 {
-    numButton = newNum;
+    numButton += 3;
     buttonText = &sdlutils().msgs().at("button" + std::to_string(numButton));
 }
 
