@@ -52,7 +52,7 @@ void Server::ProcessMessages()
 
     // int sdlInit_ret = SDL_Init(SDL_INIT_EVERYTHING);
 
-	std::unique_ptr<JSONValue2> jValueRoot2(JSON2::ParseFromFile("../resources/config/counter.json"));
+	std::unique_ptr<JSONValue2> jValueRoot2(JSON2::ParseFromFile("../resources/config/sdlutilsdemo.resources.json"));
 
 	// check it was loaded correctly
 	// the root must be a JSON object
@@ -68,17 +68,19 @@ void Server::ProcessMessages()
     std::cout<<"Lo hace\n";
 
     // load messages
-	jValue = root["personId"];
+	jValue = root["messages"];
 	if (jValue != nullptr) {
 		if (jValue->IsArray()) {
 			msgs_.reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
 			for (auto &v : jValue->AsArray()) {
 				if (v->IsObject()) {
 					JSONObject vObj = v->AsObject();
-					std::string key = vObj["id"]->AsString();
+					std::string key = vObj["idNum"]->AsString();
                     std::string txt = vObj["person"]->AsString();
+                    std::string isDecision = vObj["isDecision"]->AsString();
                     maxDialogueNumber++;
-                    msgs_.emplace(key, txt);
+                    neededInfo aux = neededInfo(txt, isDecision);
+                    msgs_.emplace(key, aux);
 				} else {
 					throw "'messages' array in 'sdlutilsdemo.resources.json' includes and invalid value";
 				}
@@ -142,19 +144,37 @@ void Server::ProcessMessages()
         case Message::NEXT_DIALOGUE:
         {
             if (id + 2 <= maxDialogueNumber){
-                Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
-                Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
 
-                std::string personToSend = msgs_.at(std::to_string(id+1));
-                if (personToSend == "1"){
-                    _socket->send(msNew, *_client1);
-                    _socket->send(msWaiting, *_client2);
+                if (msgs_.at(std::to_string(id+1)).isDecision_ == "false"){
+                    Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
+                    Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
+
+                    std::string personToSend = msgs_.at(std::to_string(id+1)).person_;
+                    if (personToSend == "1"){
+                        _socket->send(msNew, *_client1);
+                        _socket->send(msWaiting, *_client2);
+                    }else{
+                        _socket->send(msNew, *_client2);
+                        _socket->send(msWaiting, *_client1);
+                    }
+
+                    id += 2;
                 }else{
-                    _socket->send(msNew, *_client2);
-                    _socket->send(msWaiting, *_client1);
-                }
+                    // Decision decision_ = Decision(msgs_.at(st::to_string(id+1)))
+                    Message msNew(Message::NEW_DECISION, (id + 1), (id + 2), (id + 3));
+                    Message msWaiting(Message::NEW_WAITING_DECISION, (id + 1), (id + 2), (id + 3));
 
-                id += 2;
+                    std::string personToSend = msgs_.at(std::to_string(id+1)).person_;
+                    if (personToSend == "1"){
+                        _socket->send(msNew, *_client1);
+                        _socket->send(msWaiting, *_client2);
+                    }else{
+                        _socket->send(msNew, *_client2);
+                        _socket->send(msWaiting, *_client1);
+                    }
+
+                    id += 3;
+                }
             }
         }
         break;

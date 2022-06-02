@@ -15,8 +15,8 @@ Message::Message(const uint8_t type, char player)
 Message::Message(const uint8_t type, int dialogueNum1, int dialogueNum2)
     : _type(type), _dialogueNum1(dialogueNum1), _dialogueNum2(dialogueNum2){}
 
-Message::Message(const uint8_t type, Decision decision)
-    : _type(type), _decision(decision){}
+Message::Message(const uint8_t type, int decision1, int decision2, int decision3)
+    : _type(type), _decision1(decision1), _decision2(decision2), _decision3(decision3){}
 
 //Allocates dinamyc memory for _data
 void Message::AllocData(size_t size)
@@ -65,20 +65,20 @@ void Message::to_bin()
         memcpy((void*)tmp, (void*)&_dialogueNum2, sizeof(int));
         tmp += sizeof(int);
     }else if (_type == Message::NEW_DECISION || _type == Message::NEW_WAITING_DECISION){
-        AllocData(sizeof(uint8_t) + (sizeof(char) * 32) * 3);
+        AllocData(sizeof(uint8_t) + (sizeof(int) * 3));
         char* tmp = _data;
 
         memcpy((void*)tmp, (void*)&_type, sizeof(uint8_t));
         tmp += sizeof(uint8_t);
 
-        memcpy((void*)tmp, (void*)&_decision.text1, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy((void*)tmp, (void*)&_decision.text1, sizeof(int));
+        tmp += sizeof(int);
 
-        memcpy((void*)tmp, (void*)&_decision.text2, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy((void*)tmp, (void*)&_decision.text2, sizeof(int));
+        tmp += sizeof(int);
 
-        memcpy((void*)tmp, (void*)&_decision.text3, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy((void*)tmp, (void*)&_decision.text3, sizeof(int));
+        tmp += sizeof(int);
 
     }else if (_type == Message::NEXT_DIALOGUE){
         AllocData(sizeof(uint8_t));
@@ -130,13 +130,13 @@ int Message::from_bin(char * data)
 
         memcpy(&_dialogueNum2, tmp, sizeof(int));
     }else if (_type == Message::NEW_DECISION || _type == Message::NEW_WAITING_DECISION){
-        memcpy(&_decision.text1, tmp, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy(&_decision.text1, tmp, sizeof(int));
+        tmp += sizeof(int);
 
-        memcpy(&_decision.text2, tmp, sizeof(char) * 32);
-        tmp += sizeof(char) * 32;
+        memcpy(&_decision.text2, tmp, sizeof(int));
+        tmp += sizeof(int);
 
-        memcpy(&_decision.text3, tmp, sizeof(char) * 32);
+        memcpy(&_decision.text3, tmp, sizeof(int));
     }else
     if(_type == Message::INIT || _type == Message::LOGOUT) //save init/logout info
     {

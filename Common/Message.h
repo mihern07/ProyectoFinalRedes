@@ -17,7 +17,7 @@ public:
     Message(const uint8_t type, char player);
 
     Message(const uint8_t type, int dialogueNum1, int dialogueNum2);
-    Message(const uint8_t type, Decision decision);
+    Message(const uint8_t type, int decision1, int decision2, int decision3);
 
     ~Message();
 
@@ -80,6 +80,9 @@ private:
     int _dialogueNum1;
     int _dialogueNum2;
 
+    int _decision1;
+    int _decision2;
+    int _decision3;
 
     Decision _decision;
 };

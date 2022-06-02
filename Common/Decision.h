@@ -5,18 +5,18 @@
 
 struct Decision
 {
-        std::string text1;
-    std::string text2;
-    std::string text3;
+    int text1;
+    int text2;
+    int text3;
 
     //converts data separated by '\0' to string
     std::string toString()
     {
-        std::string str = text1;
+        std::string str = std::to_string(text1);
         str += '\0';
-        str += text2;
+        str += std::to_string(text2);
         str += '\0';
-        str += text3;
+        str += std::to_string(text3);
         str += '\0';
         return str;
     }

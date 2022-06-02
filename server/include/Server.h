@@ -9,6 +9,13 @@ class ServerGame;
 class Message;
 // struct InputInfo;
 
+struct neededInfo{
+    neededInfo(std::string person, std::string isDecision) : person_(person), isDecision_(isDecision){};
+
+    std::string person_;
+    std::string isDecision_;
+};
+
 class Server 
 {
 public:
@@ -49,7 +56,7 @@ private:
     SocketServer* _client2;
 
     int maxDialogueNumber;
-    std::unordered_map<std::string, std::string> msgs_;
+    std::unordered_map<std::string, neededInfo> msgs_;
 
     /**
      * Socket del servidor
