@@ -51,9 +51,7 @@ int Socket::recv(Message &obj, Socket * &sock)
 
     if ( sock != 0 )
     {
-        std::cout<<"Creado socket\n";
         sock = new Socket(&sa, sa_len);
-        std::cout<<"Info socket: "<<*sock<<"\n";
     }
 
     obj.from_bin(buffer);
@@ -66,8 +64,6 @@ int Socket::send(Message& obj, const Socket& sock)
     //Serializar el objeto
     //Enviar el objeto binario a sock usando el socket sd
     obj.to_bin();
-    std::cout<<"Enviando mensaje...\n";
-    std::cout<<"Info socket: "<< sock <<"\n";
     ssize_t message = ::sendto(sd, obj.data(), obj.size(), 0, &sock.sa, sock.sa_len);
     if(message <= 0){
         std::cout << "No se pudo enviar el mensaje\n";

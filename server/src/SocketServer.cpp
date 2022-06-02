@@ -51,9 +51,7 @@ int SocketServer::recv(Message &obj, SocketServer * &sock)
 
     if ( sock == nullptr )
     {
-        std::cout<<"Creado socket\n";
         sock = new SocketServer(&sa, sa_len);
-        std::cout<<"Info socket: "<<*sock<<"\n";
     }
 
     obj.from_bin(buffer);
@@ -66,8 +64,6 @@ int SocketServer::send(Message& obj, const SocketServer& sock)
     //Serializar el objeto
     //Enviar el objeto binario a sock usando el socket sd
     obj.to_bin();
-    std::cout<<"Enviando mensaje...\n";
-    std::cout<<"Info socket: "<< sock <<"\n";
     ssize_t message = ::sendto(sd, obj.data(), obj.size(), 0, &sock.sa, sock.sa_len);
     if(message <= 0){
         std::cout << "No se pudo enviar el mensaje\n";
