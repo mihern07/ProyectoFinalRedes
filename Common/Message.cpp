@@ -6,19 +6,16 @@ Message::Message(){}
 
 Message::Message(const uint8_t type) : _type(type){} //LOGIN, LOGOUT, START
 
-// Message::Message(const uint8_t type, const InputInfo &info, char player) //INPUT
-//     : _type(type), _inputInfo(info), _player(player){} 
-
-Message::Message(const uint8_t type, char player)  
+Message::Message(const uint8_t type, char player)
     : _type(type), _player(player){}
 
-Message::Message(const uint8_t type, int dialogueNum1, int dialogueNum2)
+Message::Message(const uint8_t type, int dialogueNum1, int dialogueNum2)    //NEW_DIALOGUE, NEW_WAITING_DIALOGUE
     : _type(type), _dialogueNum1(dialogueNum1), _dialogueNum2(dialogueNum2){}
 
-Message::Message(const uint8_t type, int decision1, int decision2, int decision3)
+Message::Message(const uint8_t type, int decision1, int decision2, int decision3)   //NEW_DECISION, NEW_WAITING_DECISION
     : _type(type), _decision1(decision1), _decision2(decision2), _decision3(decision3){}
 
-Message::Message(const uint8_t type, int nextDialogue) : _type(type), _nextDialogue(nextDialogue){}
+Message::Message(const uint8_t type, int nextDialogue) : _type(type), _nextDialogue(nextDialogue){} //NEXT_DIALOGUE
 
 //Allocates dinamyc memory for _data
 void Message::AllocData(size_t size)

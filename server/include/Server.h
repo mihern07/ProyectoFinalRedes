@@ -7,7 +7,6 @@
 class SocketServer;
 class ServerGame;
 class Message;
-// struct InputInfo;
 
 struct neededInfo{
     neededInfo(std::string person, std::string isDecision, std::string nextDialogue) :
@@ -67,12 +66,6 @@ private:
 
     const int MAX_PLAYERS = 2;
 
-    static ServerGame* _game;
-
-    static volatile bool _inputRegistered; //set to true when al player input is collected for update
-
     static volatile bool _gameEnd; //when there are not enough clients to run game, true
-
-    // static InputInfo* _playersInput; //collects all player input
 };
 #endif

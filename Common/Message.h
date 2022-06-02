@@ -2,8 +2,6 @@
 #define _H_Message_H_
 
 #include <string>
-#include "Decision.h"
-// #include "InputInfo.h"
 
 class Message
 {
@@ -13,7 +11,6 @@ public:
      */
     Message();
     Message(const uint8_t type);
-    // Message(const uint8_t type, const InputInfo &info, char player);
     Message(const uint8_t type, char player);
 
     Message(const uint8_t type, int dialogueNum1, int dialogueNum2);

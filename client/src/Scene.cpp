@@ -28,13 +28,7 @@ void Scene::initScene()
     SDLUtils::init("La Prueba VN (Pulsa ESC para salir)", 800, 600,
                    "../resources/config/sdlutilsdemo.resources.json");
 
-    // reference to the SDLUtils Singleton. You could use it as a pointer as well,
-    // I just prefer to use . instead of ->, it is just a matter of taste, nothing
-    // else!
-    //
-    // you can also use the inline method sdlutils() that simply returns the value
-    // of *SDLUtils::instance() --- it is defined at the end of SDLUtils.h
-    //
+    // reference to the SDLUtils Singleton.
     auto &sdl = *SDLUtils::instance();
 
     // show the cursor
@@ -80,8 +74,7 @@ void Scene::initScene()
     b2 = new Button(2);
     b3 = new Button(3);
 
-    // reference to the input handler (we could use a pointer, I just . rather than ->).
-    // you can also use the inline method ih() that is defined in InputHandler.h
+    // reference to the input handler
     auto &ih = *InputHandler::instance();
 
     Client::Init("127.0.0.1", "7777", this);
@@ -116,7 +109,7 @@ void Scene::initScene()
     
 
     // start the music in a loop
-    // sdl.musics().at("beat").play();
+    sdl.musics().at("beat").play();
 
     showButton = false;
     while (!exit_)
@@ -126,6 +119,7 @@ void Scene::initScene()
         // update the event handler
         ih.refresh();
 
+        // button checking
         if (ih.mouseButtonDownEvent())
         {
             auto mouseAux = ih.getMousePos();
@@ -137,17 +131,14 @@ void Scene::initScene()
                 if (PointInRect(mousePosition, b1->getRect()))
                 {
                     Client::sendDecisionChosen(1);
-                    cout << "boton1\n";
                 }
                 else if (PointInRect(mousePosition, b2->getRect()))
                 {
                     Client::sendDecisionChosen(2);
-                    cout << "boton2\n";
                 }
                 else if (PointInRect(mousePosition, b3->getRect()))
                 {
                     Client::sendDecisionChosen(3);
-                    cout << "boton3\n";
                 }
             }
             else if (canInput && PointInRect(mousePosition, button))
@@ -163,7 +154,7 @@ void Scene::initScene()
         // clear screen
         sdl.clearRenderer();
 
-        // render the SDLogo
+        // render images
         dialogBox.render(destDialogueBox);
 
         deprimida.render(destDeprimida);
@@ -206,7 +197,7 @@ void Scene::update()
     bool exit_ = false;
 }
 
-// Cambia al siguiente dialogo
+// Changes the main dialogue
 void Scene::nextDialogue(int dialogueNum1, int dialogueNum2, bool input)
 {
     canInput = input;
@@ -219,6 +210,7 @@ void Scene::nextDialogue(int dialogueNum1, int dialogueNum2, bool input)
     showButton = false;
 }
 
+// Shows buttons and changes their content
 void Scene::newDecision(int button1, int button2, int button3, bool input)
 {
     canInput = input;

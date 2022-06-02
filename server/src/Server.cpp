@@ -7,16 +7,11 @@
 
 #include "Message.h"
 #include "SocketServer.h"
-// #include "InputInfo.h"
-#include "ServerGame.h"
 #include "JSONValue2.h"
 #include <SDL2/SDL.h>
 
 #pragma region STATIC ATTRIBUTES
 
-ServerGame *Server::_game = nullptr;
-volatile bool Server::_inputRegistered = false;
-// InputInfo* Server::_playersInput = nullptr;
 volatile bool Server::_gameEnd = false;
 
 #pragma endregion
@@ -30,7 +25,6 @@ Server::Server(const char *s, const char *p)
     _client2 = nullptr;
     numRegisteredClients = 0;
     maxDialogueNumber = 0;
-    // _playersInput = new InputInfo[MAX_PLAYERS];
 }
 
 // Receives and processes messages from clients
@@ -49,8 +43,6 @@ void Server::ProcessMessages()
     // Load JSON configuration file. We use a unique pointer since we
     // can exit the method in different ways, this way we guarantee that
     // it is always deleted
-
-    // int sdlInit_ret = SDL_Init(SDL_INIT_EVERYTHING);
 
     std::unique_ptr<JSONValue2> jValueRoot2(JSON2::ParseFromFile("../resources/config/sdlutilsdemo.resources.json"));
 
@@ -131,7 +123,6 @@ void Server::ProcessMessages()
             }
             else
             {
-                // TODO: send message to stop game as player can't join
                 std::cout << "Maximum number of players reached\n";
             }
             break;
@@ -249,10 +240,6 @@ void Server::SendToClients(Message msg)
     {
         _socket->send(msg, *_client2);
     }
-    // for (Socket *sock : _clients)
-    // {
-    //     _socket->send(msg, *sock);
-    // }
 }
 
 // Creates and sets the thread that runs the game on the server
@@ -260,9 +247,6 @@ void Server::CreateGameThread()
 {
     pthread_t gameThread; // thread
     pthread_attr_t attr;
-
-    _game = new ServerGame(this);
-    _game->Init(); // initialize game before setting thread
 
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
@@ -275,29 +259,14 @@ void Server::CreateGameThread()
 // Thread function that runs the game server side
 void *Server::RunGame(void *)
 {
-    /// ***     FOR TEST: COMMENT PLAYER LOST CONDITION    *** ///
     while (!_gameEnd)
     {
-        if (_inputRegistered)
-        {
-            _inputRegistered = false;
-            // _game->SetInputInfo(_playersInput);
-            _game->Update();
-        }
     }
     pthread_exit(NULL);
 }
 
 Server::~Server()
 {
-    if (_game != nullptr)
-    {
-        delete _game;
-        _game = nullptr;
-    }
-
     delete _socket;
     _socket = nullptr;
-
-    // delete [] _playersInput;
 }
