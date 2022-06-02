@@ -195,7 +195,6 @@ void Server::ProcessMessages()
                         _socket->send(msNew, *_client2);
                         _socket->send(msWaiting, *_client1);
                     }
-                    id += 3;
                 }
             }
         }
@@ -203,7 +202,7 @@ void Server::ProcessMessages()
 
         case Message::CHOSE_DECISION:
         {
-            id = std::stoi(msgs_.at(std::to_string(id + msg.getNextDialogue() - 1)).nextDialogue_);
+            id = std::stoi(msgs_.at(std::to_string(id + msg.getNextDialogue())).nextDialogue_);
             if (id + 2 <= maxDialogueNumber)
             {
                 Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
