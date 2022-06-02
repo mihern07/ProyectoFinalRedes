@@ -2,8 +2,9 @@
 #define _H_Server_H_
 
 #include <vector>
+#include <unordered_map>
 
-class Socket;
+class SocketServer;
 class ServerGame;
 class Message;
 // struct InputInfo;
@@ -43,16 +44,17 @@ private:
      */
     static void* RunGame(void*);
 
-    /**
-     *  Lista de clientes conectados al servidor de Chat, representados por
-     *  su socket
-     */
-    std::vector<Socket *> _clients;
+    int numRegisteredClients;
+    SocketServer* _client1;
+    SocketServer* _client2;
+
+    int maxDialogueNumber;
+    std::unordered_map<std::string, std::string> msgs_;
 
     /**
      * Socket del servidor
      */
-    Socket* _socket = nullptr;
+    SocketServer* _socket = nullptr;
 
     const int MAX_PLAYERS = 2;
 

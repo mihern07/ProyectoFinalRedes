@@ -1,14 +1,16 @@
 #include "Server.h"
 #include <string>
 #include <unistd.h>
-#include <string.h>
 #include <iostream>
 #include <pthread.h>
+#include <memory>
 
 #include "Message.h"
-#include "Socket.h"
+#include "SocketServer.h"
 // #include "InputInfo.h"
 #include "ServerGame.h"
+#include "JSONValue2.h"
+#include <SDL2/SDL.h>
 
 #pragma region STATIC ATTRIBUTES
 
@@ -21,10 +23,13 @@ volatile bool Server::_gameEnd = false;
 
 Server::Server(const char *s, const char *p)
 {
-    _socket = new Socket(s, p);
-    _socket->Bind();
+    _socket = new SocketServer(s, p);
+    _socket->bind();
 
-    _clients.reserve(MAX_PLAYERS);
+    _client1 = nullptr;
+    _client2 = nullptr;
+    numRegisteredClients = 0;
+    maxDialogueNumber = 0;
     // _playersInput = new InputInfo[MAX_PLAYERS];
 }
 
@@ -36,22 +41,82 @@ void Server::ProcessMessages()
     int playersReady = 0;
     int inputRecv = 0;
     int id = 1;
+
+    // TODO check the correctness of values and issue a corresponding
+	// exception. Now we just do some simple checks, and assume input
+	// is correct.
+
+	// Load JSON configuration file. We use a unique pointer since we
+	// can exit the method in different ways, this way we guarantee that
+	// it is always deleted
+
+    // int sdlInit_ret = SDL_Init(SDL_INIT_EVERYTHING);
+
+	std::unique_ptr<JSONValue2> jValueRoot2(JSON2::ParseFromFile("../resources/config/counter.json"));
+
+	// check it was loaded correctly
+	// the root must be a JSON object
+	if (jValueRoot2 == nullptr || !jValueRoot2->IsObject()) {
+		std::cout<<"Something went wrong while load/parsing 'counter.json'";
+	}
+
+    std::cout<<"All ok\n";
+
+	// we know the root is JSONObject
+	JSONObject root = jValueRoot2->AsObject();
+	JSONValue2 *jValue = nullptr;
+    std::cout<<"Lo hace\n";
+
+    // load messages
+	jValue = root["personId"];
+	if (jValue != nullptr) {
+		if (jValue->IsArray()) {
+			msgs_.reserve(jValue->AsArray().size()); // reserve enough space to avoid resizing
+			for (auto &v : jValue->AsArray()) {
+				if (v->IsObject()) {
+					JSONObject vObj = v->AsObject();
+					std::string key = vObj["id"]->AsString();
+                    std::string txt = vObj["person"]->AsString();
+                    maxDialogueNumber++;
+                    msgs_.emplace(key, txt);
+				} else {
+					throw "'messages' array in 'sdlutilsdemo.resources.json' includes and invalid value";
+				}
+			}
+		} else {
+			throw "'messages' is not an array in 'sdlutilsdemo.resources.json'";
+		}
+	}
+    std::cout<<"Llega al final\n";
+
+    _client1 = nullptr;
+    _client2 = nullptr;
+
     while (true) // receive messages
     {
-        Socket *client;
+        SocketServer *client = nullptr;
         Message msg;
         _socket->recv(msg, client);
 
         switch (msg._type)
         {
         case Message::LOGIN:
-            if (_clients.size() < MAX_PLAYERS) // add player
+            if (numRegisteredClients < MAX_PLAYERS) // add player
             {
-                _clients.push_back(client);
-                std::cout << "Player " << _clients.size() << " joined the game\n";
+                if (_client1 != nullptr){
+                    std::cout<<"Creado 2\n";
+                    _client2 = client;
+                }else{
+                    std::cout<<"Creado 1\n";
+                    // std::cout<<client->sd<<"\n";
+                    _client1 = client;
+                    // std::cout<<_client1->sd<<"\n";
+                }
+                numRegisteredClients++;
+                std::cout << "Player " << numRegisteredClients << " joined the game\n";
 
                 Message ms(Message::INIT);                // notify client to init game and send player id
-                ms._player = (_clients.size() - 1) + '0'; // client is last player to join
+                ms._player = (numRegisteredClients - 1) + '0'; // client is last player to join
                 _socket->send(ms, *client);
 
                 if (_gameEnd)
@@ -74,38 +139,39 @@ void Server::ProcessMessages()
             }
             break;
 
-        // case Message::INPUT:
-        //     inputRecv++;
-        //     _playersInput[(msg._player-'0')] = InputInfo(msg._inputInfo);
-
-        //     if(inputRecv == MAX_PLAYERS) //game update can be run
-        //     {
-        //         inputRecv = 0;
-        //         _inputRegistered = true;
-        //     }
-        //     //std::cout << "Input received\n";
-        // break;
         case Message::NEXT_DIALOGUE:
         {
-            Message ms(Message::NEW_DIALOGUE, (id + 1), (id + 2));
-            id += 2;
+            if (id + 2 <= maxDialogueNumber){
+                Message msNew(Message::NEW_DIALOGUE, (id + 1), (id + 2));
+                Message msWaiting(Message::NEW_WAITING_DIALOGUE, (id + 1), (id + 2));
 
-            _socket->send(ms, *client);
+                std::string personToSend = msgs_.at(std::to_string(id+1));
+                if (personToSend == "1"){
+                    _socket->send(msNew, *_client1);
+                    _socket->send(msWaiting, *_client2);
+                }else{
+                    _socket->send(msNew, *_client2);
+                    _socket->send(msWaiting, *_client1);
+                }
+
+                id += 2;
+            }
         }
         break;
 
         case Message::LOGOUT:
-            for (int i = 0; i < _clients.size(); i++) // delete player from saved clients
-            {
-                if (*_clients[i] == *client)
-                {
-                    _clients.erase(_clients.begin() + i);
-
-                    int id = (msg._player - '0') + 1;
-                    std::cout << "Player " << id << " exited game" << std::endl;
-                    break;
-                }
+            if (msg._player = 0 + '0'){
+                int id = (msg._player - '0') + 1;
+                std::cout << "Player exited game" << std::endl;
+                delete _client1;
+                _client1 = nullptr;
+            }else if (msg._player == 1 + '0'){
+                int id = (msg._player - '0') + 1;
+                std::cout << "Player exited game" << std::endl;
+                delete _client2;
+                _client2 = nullptr;
             }
+            numRegisteredClients--;
             _gameEnd = true;
             playersReady = 0;
             inputRecv = 0;
@@ -117,10 +183,17 @@ void Server::ProcessMessages()
 // Sends a message to all clients connected to the server
 void Server::SendToClients(Message msg)
 {
-    for (Socket *sock : _clients)
-    {
-        _socket->send(msg, *sock);
+    if (_client1 != nullptr){
+        _socket->send(msg, *_client1);
     }
+        
+    if (_client2 != nullptr){
+        _socket->send(msg, *_client2);
+    }
+    // for (Socket *sock : _clients)
+    // {
+    //     _socket->send(msg, *sock);
+    // }
 }
 
 // Creates and sets the thread that runs the game on the server

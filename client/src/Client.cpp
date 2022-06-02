@@ -79,7 +79,7 @@ void *Client::net_thread(void *)
         {
             _startGame = true;
         }
-        else if (msg._type == Message::NEW_DIALOGUE) // game start
+        else if (msg._type == Message::NEW_DIALOGUE || msg._type == Message::NEW_WAITING_DIALOGUE) // game start
         {
             _scene->nextDialogue(msg.getDialogueNum1(), msg.getDialogueNum2());
         }
