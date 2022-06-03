@@ -10,7 +10,6 @@ Button::Button(int auxNum)
     int width = sdlutils().width();
     int height = sdlutils().height();
 
-    std::cout << "mainText" + std::to_string(numButton);
     switch (numButton)
     {
     case 1:

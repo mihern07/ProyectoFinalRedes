@@ -198,7 +198,6 @@ void Scene::nextDialogue(int dialogueNum1, int dialogueNum2, bool input)
     canInput = input;
     // DEBUG
     string aux = "mainText" + to_string(dialogueNum1);
-    cout << aux << "\n";
 
     text1 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum1));
     text2 = &sdlutils().msgs().at("mainText" + to_string(dialogueNum2));
