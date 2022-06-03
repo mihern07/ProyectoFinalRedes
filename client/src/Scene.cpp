@@ -105,10 +105,7 @@ void Scene::initScene()
                 exit_ = true;
         }
     }
-
-    // start the music in a loop
-    sdl.musics().at("beat").play();
-
+    
     showButton = false;
     while (!exit_)
     {
@@ -187,8 +184,6 @@ void Scene::initScene()
     // Release client resources
     Client::Release();
 
-    // stop the music
-    Music::haltMusic();
 }
 
 void Scene::update()
