@@ -60,6 +60,17 @@
   ],
   "messages": [
     {
+      "id": "textInput",
+      "text": "Te toca",
+      "font": "ZACHARY36",
+      "bg":"0xa20087ff",
+      "color": "0xffffffff",
+      "idNum": "90",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "-1"
+    },
+    {
       "id": "mainText0",
       "text": "Pija: Vamos a ver, vosotras 2. O sea, habeis",
       "font": "ZACHARY36",
@@ -378,7 +389,7 @@
       "font": "ZACHARY36",
       "color": "0xa20087ff",
       "idNum": "31",
-      "person": "1",
+      "person": "2",
       "isDecision": "false",
       "nextDialogue": "33"
     },
@@ -388,9 +399,528 @@
       "font": "ZACHARY36",
       "color": "0xa20087ff",
       "idNum": "32",
-      "person": "1",
+      "person": "2",
       "isDecision": "false",
       "nextDialogue": "33"
+    },
+    {
+      "id": "mainText33",
+      "text": "Coco Chanel",
+      "font": "ZACHARY36",
+      "bg": "0x9404ffff",
+      "color": "0xffffffff",
+      "idNum": "33",
+      "person": "2",
+      "isDecision": "true",
+      "nextDialogue": "36"
+    },
+    {
+      "id": "mainText34",
+      "text": "Sharpay Evans",
+      "font": "ZACHARY36",
+      "bg": "0x9404ffff",
+      "color": "0xffffffff",
+      "idNum": "34",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "36"
+    },
+    {
+      "id": "mainText35",
+      "text": "Gianni Versace",
+      "font": "ZACHARY36",
+      "bg": "0x9404ffff",
+      "color": "0xffffffff",
+      "idNum": "35",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "36"
+    },
+    {
+      "id": "mainText36",
+      "text": "Chanel y Versace son marcas mundialmente",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "36",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "38"
+    },
+    {
+      "id": "mainText37",
+      "text": "conocidas, pero no hay nadie que combata",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "37",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "38"
+    },
+    {
+      "id": "mainText38",
+      "text": "el glamour y de mi querida Sharpay Evans",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "38",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "40"
+    },
+    {
+      "id": "mainText39",
+      "text": "Ultima pregunta para mi nena la rancia:",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "39",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "40"
+    },
+    {
+      "id": "mainText40",
+      "text": "          Vestir rosa fuxia significa",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "40",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "42"
+    },
+    {
+      "id": "mainText41",
+      "text": "          empoderamiento femenino:",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "41",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "42"
+    },
+    {
+      "id": "mainText42",
+      "text": "Verdadero",
+      "font": "ZACHARY36",
+      "bg": "0x00000000",
+      "color": "0xffffffff",
+      "idNum": "42",
+      "person": "1",
+      "isDecision": "true",
+      "nextDialogue": "45"
+    },
+    {
+      "id": "mainText43",
+      "text": "Falso",
+      "font": "ZACHARY36",
+      "bg": "0x00000000",
+      "color": "0xffffffff",
+      "idNum": "43",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "49"
+    },
+    {
+      "id": "mainText44",
+      "text": "Verdadero ",
+      "font": "ZACHARY36",
+      "bg": "0xff00f3ff",
+      "color": "0xffffffff",
+      "idNum": "44",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "45"
+    },
+    {
+      "id": "mainText45",
+      "text": "En efecto, quien necesita inteligencia",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "45",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "47"
+    },
+    {
+      "id": "mainText46",
+      "text": "emocional y sororidad cuando puedo ",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "46",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "47"
+    },
+    {
+      "id": "mainText47",
+      "text": "vestir un top y una minifalda rosa",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "47",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "53"
+    },
+    {
+      "id": "mainText48",
+      "text": "y sentirme mucho mas empoderada :) ",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "48",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "53"
+    },
+    {
+      "id": "mainText49",
+      "text": "Cielo la inteligencia emocional es un",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "49",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "51"
+    },
+    {
+      "id": "mainText50",
+      "text": "constructo social, sin rosa en tu vida,",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "50",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "51"
+    },
+    {
+      "id": "mainText51",
+      "text": "nunca sentiras el poder femenino y",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "51",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "53"
+    },
+    {
+      "id": "mainText52",
+      "text": "             nunca seras feliz :)",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "52",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "53"
+    },
+    {
+      "id": "mainText53",
+      "text": "La ultima pregunta para la deprimida",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "53",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "55"
+    },
+    {
+      "id": "mainText54",
+      "text": "famoso que sea referente a seguir: ",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "54",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "55"
+    },
+    {
+      "id": "mainText55",
+      "text": "Malala Yousafzai",
+      "font": "ZACHARY36",
+      "bg": "0xff00f3ff",
+      "color": "0xffffffff",
+      "idNum": "55",
+      "person": "2",
+      "isDecision": "true",
+      "nextDialogue": "58"
+    },
+    {
+      "id": "mainText56",
+      "text": "Mahatma Gandhi",
+      "font": "ZACHARY36",
+      "bg": "0xff00f3ff",
+      "color": "0xffffffff",
+      "idNum": "56",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "64"
+    },
+    {
+      "id": "mainText57",
+      "text": "Kim Kardashian",
+      "font": "ZACHARY36",
+      "bg": "0xff00f3ff",
+      "color": "0xffffffff",
+      "idNum": "57",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "66"
+    },
+    {
+      "id": "mainText58",
+      "text": "Una activista que ha recibido el premio",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "58",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "60"
+    },
+    {
+      "id": "mainText59",
+      "text": "nobel con menos de 18 anyos no tiene NADA",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "59",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "60"
+    },
+    {
+      "id": "mainText60",
+      "text": "de relevancia comparado con una mujer que",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "60",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "62"
+    },
+    {
+      "id": "mainText61",
+      "text": "lleva 10 anyos combinando pintalabios nude",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "61",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "62"
+    },
+    {
+      "id": "mainText62",
+      "text": "    de una manera tan ingeniosa para que",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "62",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "68"
+    },
+    {
+      "id": "mainText63",
+      "text": "       te pegue con tu tono de piel",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "63",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "68"
+    },
+    {
+      "id": "mainText64",
+      "text": "El dirigente mas importante de la",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "64",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "60"
+    },
+    {
+      "id": "mainText65",
+      "text": "independencia de la India no tiene NADA",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "65",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "60"
+    },
+    {
+      "id": "mainText66",
+      "text": "EXACTO. NO hay nadie en toda la tierra",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "66",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "60"
+    },
+    {
+      "id": "mainText67",
+      "text": "               que tenga absolutamente NADA ",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "67",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "60"
+    },
+    {
+      "id": "mainText68",
+      "text": "Por si no os habeis dado cuenta todavia",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "68",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "70"
+    },
+    {
+      "id": "mainText69",
+      "text": "ninguna vais a entrar en el super club :)",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "69",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "70"
+    },
+    {
+      "id": "mainText70",
+      "text": "Pero por que? ;c",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "70",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "72"
+    },
+    {
+      "id": "mainText71",
+      "text": "...",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "71",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "72"
+    },
+    {
+      "id": "mainText72",
+      "text": "Vamos a ver pero tu de que vas, quieres",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "72",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "74"
+    },
+    {
+      "id": "mainText73",
+      "text": "que te parta las piernas o que, pijarrona?",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "73",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "74"
+    },
+    {
+      "id": "mainText74",
+      "text": "Habeis hecho ambas el test bien",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "74",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "76"
+    },
+    {
+      "id": "mainText75",
+      "text": "pero acaso os habeis mirado en un espejo?",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "75",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "76"
+    },
+    {
+      "id": "mainText76",
+      "text": "no puedo meter a chicas con esas patas de",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "76",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "78"
+    },
+    {
+      "id": "mainText77",
+      "text": "gallo y esos parpados caidos, iugh",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "77",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "78"
+    },
+    {
+      "id": "mainText78",
+      "text": "Y cual ha sido el proposito de hacernos",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "78",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "80"
+    },
+    {
+      "id": "mainText79",
+      "text": "perder 5 minutos de nuestra vida?",
+      "font": "ZACHARY36",
+      "color": "0x330175ff",
+      "idNum": "79",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "80"
+    },
+    {
+      "id": "mainText80",
+      "text": "Aprobar redes, por supuesto ",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "80",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "82"
+    },
+    {
+      "id": "mainText81",
+      "text": "Espero que lo hayais disfrutado :)",
+      "font": "ZACHARY36",
+      "color": "0xa20087ff",
+      "idNum": "81",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "82"
+    },
+    {
+      "id": "mainText82",
+      "text": "Entonces cual ha sido tu proposito?",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "82",
+      "person": "1",
+      "isDecision": "false",
+      "nextDialogue": "80"
+    },
+    {
+      "id": "mainText83",
+      "text": " ",
+      "font": "ZACHARY36",
+      "color": "0x6f4600ff",
+      "idNum": "83",
+      "person": "2",
+      "isDecision": "false",
+      "nextDialogue": "80"
     }
   ],
   "sounds": [

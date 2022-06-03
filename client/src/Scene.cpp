@@ -25,7 +25,7 @@ void Scene::initScene()
 {
 
     // Initialise the SDLGame singleton
-    SDLUtils::init("La Prueba VN (Pulsa ESC para salir)", 800, 600,
+    SDLUtils::init("Quiz SUPER TRENDY (Pulsa ESC para salir)", 800, 600,
                    "../resources/config/sdlutilsdemo.resources.json");
 
     // reference to the SDLUtils Singleton.
@@ -43,6 +43,8 @@ void Scene::initScene()
     auto &rancia = sdl.images().at("rancia");
     auto &pijaFlip = sdl.images().at("pijaFlip");
     auto &deprimida = sdl.images().at("deprimida");
+    
+    auto &canInputText = sdl.msgs().at("textInput");
 
     auto &textLine1 = sdl.msgs().at("mainText0");
     auto &textLine2 = sdl.msgs().at("mainText1");
@@ -166,6 +168,9 @@ void Scene::initScene()
             b2->render();
             b3->render();
         }
+
+        if (canInput)
+            canInputText.render(0, 0);
 
         // present new frame
         sdl.presentRenderer();
